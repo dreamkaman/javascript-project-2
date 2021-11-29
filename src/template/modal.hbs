@@ -1,0 +1,37 @@
+{{#each this}}
+  <section class="modal visually-hidden">
+    <button type="button" class="modal-close-btn"><svg width="30px"><use
+          href="./images/sprite.svg#icon-close"
+        ></use></svg></button>
+    <div class="modal-box-main">
+      <div class="modal-img-box">
+        <img src="{{poster_path}}" class="modal-image-film" alt="film" />
+      </div>
+      <div class="modal-info">
+        <h1 class="modal-title">{{title}}</h1>
+        <div class="modal-lists-main">
+          <ul class="modal-name-info list">
+            <li>Vote/Votes</li>
+            <li>Popularity</li>
+            <li>Original Title</li>
+            <li>Genre</li>
+          </ul>
+          <ul class="modal-name-info-content list">
+            <li><span class="modal-rating-film">{{vote_average}}</span><span class="modal-slash">/</span>{{vote_count}}</li>
+            <li>{{popularity}}</li>
+            <li>{{original_title}}</li>
+            <li>{{genre_ids}}</li>
+          </ul>
+        </div>
+        <div class="modal-about-box">
+          <h2>ABOUT</h2>
+          <p>{{overview}}</p>
+        </div>
+        <div class="modal-btns">
+          <button type="submit" class="modal-btn js-watched">ADD TO WATCHED</button>
+          <button type="submit" class="modal-btn js-queue">ADD TO QUEUE</button>
+        </div>
+      </div>
+    </div>
+  </section>
+{{/each}}
