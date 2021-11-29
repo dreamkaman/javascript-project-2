@@ -1,0 +1,13 @@
+{{#each this}}
+<div class="card-photo">
+    <img src="{{poster_path}}" alt="{{original_title}}" loading="lazy" />
+    <div class="card-info">
+        <p class="card-name">
+            {{original_title}}
+        </p>
+        <p class="card-genre-date">
+            {{genres.name}} | {{release_date}}
+        </p>
+    </div>
+</div>
+{{/each}}
