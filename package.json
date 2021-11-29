@@ -5,7 +5,7 @@
   "main": "index.js",
   "homepage": "https://dreamkaman.github.io/javascript-project-2",
   "scripts": {
-    "dev": "parcel src/*.html",
+    "dev": "parcel src/index.html",
     "build": "parcel build src/*.html --public-url /javascript-project-2/"
   },
   "repository": {
