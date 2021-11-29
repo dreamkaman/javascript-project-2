@@ -1,1 +1,22 @@
-<header>Hallo header!</header>
+<header>
+  <nav class="nav">
+    <a class="logo" href="./index.html">
+      <svg class="logo-icon"><use href="./images/svg/sprite.svg#icon-logo"></use></svg>
+      <p class="header-logo">Filmoteka</p>
+      </a>
+      <ul class="nav-list">
+        <li class="nav-list-item"><a class="nav-link">home</a></li>
+        <li class="nav-list-item"><a class="nav-link">my library</a></li>
+      </ul>
+    </a>
+  </nav>
+  <form class="search-form">
+    <input class="search-input" type="text" placeholder="Поиск фильмов" required />
+    <button>
+      <svg class="search-icon"><use href="./images/svg/sprite.svg#icon-search"></use></svg>
+    </button>
+  </form>
+  <p class="error-text">
+    Search result not successful. Enter the correct movie name and try again.
+  </p>
+</header>
