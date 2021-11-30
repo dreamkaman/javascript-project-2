@@ -1,7 +1,7 @@
 import ApiService from '../js/fetch-api';
 import galleryCardTemplate from '../template/card.hbs'
 
-const form = document.querySelector('#search-form');
+const form = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery');
 const input = document.querySelector('.search-input');
 
@@ -40,6 +40,6 @@ const searchContent = event => {
     }
 }
 
-form.addEventListener('submit', searchContent);
+//form.addEventListener('submit', searchContent);
 
-apiService.fetchFilmPopular();
+console.log(apiService.fetchFilmPopular());
