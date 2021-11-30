@@ -1,7 +1,24 @@
 header {
-  background-image: url('../images/header/mobile/background-images/header-bg.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url('../images/header/mobile/background-images/header-bg.jpg');
   background-repeat: no-repeat;
-  background-size: content;
+  background-size: cover;
+  color: $main-white-color;
+}
+
+.header-container {
+  padding: 46px 20px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
 }
 
 .logo-icon {
@@ -10,8 +27,75 @@ header {
   height: 24px;
 }
 
+.current-page {
+  border-bottom: 3px solid $main-orange-color;
+}
+
 .search-icon {
   fill: none;
   width: 12px;
   height: 12px;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+}
+
+.nav-list-item {
+  text-transform: uppercase;
+
+  font-size: 12px;
+  line-height: 1.16;
+  font-weight: 500;
+}
+
+.nav-list-item:first-child {
+  margin-right: 40px;
+}
+
+.search-form {
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid $main-white-color;
+  color: $main-white-color;
+
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.search-input::placeholder {
+  color: $main-white-color;
+}
+
+.search-submit-btn {
+  position: absolute;
+  left: 97%;
+  bottom: 12%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+
+  background-color: transparent;
+  border: none;
+}
+
+.error-text {
+  color: $main-error-color;
+  font-size: 14px;
+  line-height: 1.14;
+}
+
+.is-hidden {
+  opacity: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .header-logo {
+    display: none;
+  }
 }
