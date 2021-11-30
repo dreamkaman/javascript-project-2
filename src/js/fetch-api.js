@@ -1,3 +1,6 @@
+import { Console, log } from 'console';
+import { async } from 'fast-glob';
+
 const axios = require('axios').default;
 
 const BASE_URL = 'https://api.themoviedb.org/3/';
@@ -15,11 +18,7 @@ fetchFilmSearch = async (searchFilm) => {
     const fetch = await axios({
         url: `search/movie?api_key=${API_KEY}&language=en-US&query=${this.searchFilm}&page=${this.pages}&include_adult=false`,
         baseURL: BASE_URL,
-    })
-    // console.log('data: ', data);
-
-
-    .then(response => {
+    }).then(response => {
         console.log(response.data)
         this.plusPage();
         this.minusPage();
@@ -29,13 +28,25 @@ fetchFilmSearch = async (searchFilm) => {
     });
 
     return fetch;
-    const {data: {genres}} = await axios({
+
+    // const {data: {genres}} = await axios({
+    //     url: `genre/movie/list?api_key=${API_KEY}&language=en-US`,
+    //     baseURL: BASE_URL,
+    // });
+
+    // console.log('genres: ', genres);
+}   
+
+fetchGenres = async () => {
+    const fetch = await axios({
         url: `genre/movie/list?api_key=${API_KEY}&language=en-US`,
         baseURL: BASE_URL,
+    }).then(response => {
+        console.log(response.data)
+        return response.data;
     });
-
-    console.log('genres: ', genres);
-}   
+    return fetch;
+}
 
 fetchFilmId = async (filmId) => {
     const fetch = await axios({

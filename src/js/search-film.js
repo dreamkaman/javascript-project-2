@@ -22,7 +22,7 @@ const searchContent = event => {
     if (string !== "") {
         apiService.resetPages();
         apiService.film = string;
-        console.log(apiService.name)
+        console.log(apiService.film)
         apiService.fetchFilmSearch().then(data => {
             // if (data.page === 0){
             //     clearSearch();
@@ -30,16 +30,21 @@ const searchContent = event => {
             //     form.innerHTML("beforeend", error);
             // }else {
             // clearSearch();
+            console.log('data ', data);
+
             renderGalleryCard(data);
             apiService.resetPages();
             })   
             .catch(error => {
             console.log(error)});
-    }else {
-        clearSearch();
+        }else {
+            clearSearch();
+        }
     }
-}
-
+    apiService.fetchGenres().then(data => {
+        console.log(data.name);
+    })
+    
 form.addEventListener('submit', searchContent);
 
 apiService.fetchFilmPopular();
