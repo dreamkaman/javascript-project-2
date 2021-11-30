@@ -27,7 +27,7 @@ fetchFilmSearch = async (searchFilm) => {
     //     return response.data;  
     // });
     const {data: {genres}} = await axios({
-        url: `genre/movie/list?api_key=${API_KEY}`,
+        url: `genre/movie/list?api_key=${API_KEY}&language=en-US`,
         baseURL: BASE_URL,
     });
 
@@ -63,7 +63,7 @@ fetchFilmPopular = async () => {
     })
 
     const {data: {genres}} = await axios({
-        url: `genre/movie/list?api_key=${API_KEY}`,
+        url: `genre/movie/list?api_key=${API_KEY}&language=en-US`,
         baseURL: BASE_URL,
     });
     // return fetch;
