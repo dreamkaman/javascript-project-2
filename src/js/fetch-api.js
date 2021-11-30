@@ -7,11 +7,12 @@ export default class ApiSeviseSearch {
 
 constructor() {
     this.searchFilm = '';
+    this.searchFilmId = '';
     this.pages = 1;
     // this.limit = 20;
 }
 
-fetchFilmSearch = async (searchFilm) => {
+fetchFilmSearch = async (searchfilm) => {
     const fetch = await axios({
         url: `search/movie?api_key=${API_KEY}&language=en-US&query=${this.searchFilm}&page=${this.pages}&include_adult=false`,
         baseURL: BASE_URL,
@@ -22,6 +23,17 @@ fetchFilmSearch = async (searchFilm) => {
         this.plusPages();
         this.minusPages();
         return response.data;  
+    });
+    return fetch;
+}
+
+fetchFilmId = async (filmId) => {
+    const fetch = await axios({
+        url: `movie/${this.searchFilmId}?api_key=${API_KEY}&language=en-US`,
+        baseURL: BASE_URL,
+    }).then(response => {
+        this.resetFilmId;
+        return response.data;
     });
     return fetch;
 }
@@ -61,12 +73,24 @@ resetPages(){
     this.pages = 1;
 }
 
+resetFilmId(){
+    this.searchFilmId = '';
+}
+
 get film() {
-    return this.searchName;
+    return this.searchFilm;
 }
 
 set film(newFilm) {
     this.searchFilm = newFilm;
+}
+
+get filmId() {
+    return this.searchFilmId;
+}
+
+set filmId(newFilmId) {
+    this.searchFilmId = newFilmId;
 }
 
 }

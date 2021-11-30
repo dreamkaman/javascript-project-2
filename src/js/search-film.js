@@ -3,12 +3,12 @@ import galleryCardTemplate from './template/card.hbs'
 
 const form = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery');
-const btn = {
-    Next: document.querySelector('.btn-next'),
-    Nexts: document.querySelector('.btn-next2'),
-    Back: document.querySelector('.btn-back'),
-    Backs: document.querySelector('.btn-back2')
-}
+// const btn = {
+//     Next: document.querySelector('.btn-next'),
+//     Nexts: document.querySelector('.btn-next2'),
+//     Back: document.querySelector('.btn-back'),
+//     Backs: document.querySelector('.btn-back2')
+// }
 
 const apiService = new ApiService();
 
