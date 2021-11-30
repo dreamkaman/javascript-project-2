@@ -59,29 +59,21 @@ fetchFilmId = async (filmId) => {
     return fetch;
 }
 
-fetchFilmPopular = async () => {
-    // const fetch = await axios({
-    //     url: `trending/all/week?api_key=${API_KEY}&language=en-US&page=${this.pages}`,
-    //     baseURL: BASE_URL,
-    // }).then(response => {
-    //     console.log(response.data)
-    //     this.plusPage();
-    //     this.minusPage();
-    //     this.plusPages();
-    //     this.minusPages();
-    //     return response.data;  
-    // });
-    const {data} = await axios({
-        url: `trending/all/week?api_key=${API_KEY}&language=en-US&page=${this.pages}`,
-        baseURL: BASE_URL,
-    })
+    fetchFilmPopular = async () => {
+    
+        const fetch = await axios({
+            url: `trending/all/week?api_key=${API_KEY}&language=en-US&page=${this.pages}`,
+            baseURL: BASE_URL,
+        }).then(response => {
 
-    const {data: {genres}} = await axios({
-        url: `genre/movie/list?api_key=${API_KEY}&language=en-US`,
-        baseURL: BASE_URL,
-    });
-    // return fetch;
-}
+            return response.data;
+          
+        });
+
+        return fetch;
+
+    }
+
 
 plusPage() {
     this.pages += 1;
