@@ -47,4 +47,4 @@ const searchContent = event => {
     
 form.addEventListener('submit', searchContent);
 
-apiService.fetchFilmPopular();
+console.log(apiService.fetchFilmPopular());
