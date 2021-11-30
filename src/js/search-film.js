@@ -42,9 +42,9 @@ const searchContent = event => {
         }
     }
     apiService.fetchGenres().then(data => {
-        console.log(data.name);
+        console.log(data.genres.name);
     })
     
 form.addEventListener('submit', searchContent);
 
-console.log(apiService.fetchFilmPopular());
+console.log(apiService.fetchFilmPopular());//my code
