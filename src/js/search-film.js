@@ -3,12 +3,7 @@ import galleryCardTemplate from './template/card.hbs'
 
 const form = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery');
-// const btn = {
-//     Next: document.querySelector('.btn-next'),
-//     Nexts: document.querySelector('.btn-next2'),
-//     Back: document.querySelector('.btn-back'),
-//     Backs: document.querySelector('.btn-back2')
-// }
+const input = document.querySelector('.search-input');
 
 const apiService = new ApiService();
 
@@ -31,7 +26,7 @@ const searchContent = event => {
         apiService.fetchFilmSearch().then(data => {
             if (data.totalHits === 0){
                 clearSearch();
-                const error = "<p>Search result not successful. Enter the correct movie name and</p>";
+                input.classList.add(".is-hidden")
                 form.innerHTML("beforeend", error);
             }else {
             clearSearch();

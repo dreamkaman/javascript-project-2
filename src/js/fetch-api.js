@@ -9,27 +9,34 @@ constructor() {
     this.searchFilm = '';
     this.searchFilmId = '';
     this.pages = 1;
-    // this.limit = 20;
 }
 
-fetchFilmSearch = async (searchfilm) => {
-    const fetch = await axios({
-        url: `search/movie?api_key=${API_KEY}&language=en-US&query=${this.searchFilm}&page=${this.pages}&include_adult=false`,
+fetchFilmSearch = async (searchFilm) => {
+    const {data} = await axios({
+        url: `search/movie?api_key=${API_KEY}&language=en-US&query=${searchFilm}&page=${this.pages}&include_adult=false`,
         baseURL: BASE_URL,
-    }).then(response => {
-        console.log(response.data)
-        this.plusPage();
-        this.minusPage();
-        this.plusPages();
-        this.minusPages();
-        return response.data;  
+    })
+
+    console.log('data: ', data);
+    // .then(response => {
+    //     console.log(response.data)
+    //     this.plusPage();
+    //     this.minusPage();
+    //     this.plusPages();
+    //     this.minusPages();
+    //     return response.data;  
+    // });
+    const {data: {genres}} = await axios({
+        url: `genre/movie/list?api_key=${API_KEY}`,
+        baseURL: BASE_URL,
     });
-    return fetch;
-}
+
+    console.log('genres: ', genres);
+}   
 
 fetchFilmId = async (filmId) => {
     const fetch = await axios({
-        url: `movie/${this.searchFilmId}?api_key=${API_KEY}&language=en-US`,
+        url: `movie/${filmId}?api_key=${API_KEY}&language=en-US`,
         baseURL: BASE_URL,
     }).then(response => {
         this.resetFilmId;
@@ -38,20 +45,29 @@ fetchFilmId = async (filmId) => {
     return fetch;
 }
 
-// fetchFilmPopular = async () => {
-//     const fetch = await axios({
-//         url: `trending/all/week?api_key=${API_KEY}&language=en-US&page=${this.pages}`,
-//         baseURL: BASE_URL,
-//     }).then(response => {
-//         console.log(response.data)
-//         this.plusPage();
-//         this.minusPage();
-//         this.plusPages();
-//         this.minusPages();
-//         return response.data;  
-//     });
-//     return fetch;
-// }
+fetchFilmPopular = async () => {
+    // const fetch = await axios({
+    //     url: `trending/all/week?api_key=${API_KEY}&language=en-US&page=${this.pages}`,
+    //     baseURL: BASE_URL,
+    // }).then(response => {
+    //     console.log(response.data)
+    //     this.plusPage();
+    //     this.minusPage();
+    //     this.plusPages();
+    //     this.minusPages();
+    //     return response.data;  
+    // });
+    const {data} = await axios({
+        url: `trending/all/week?api_key=${API_KEY}&language=en-US&page=${this.pages}`,
+        baseURL: BASE_URL,
+    })
+
+    const {data: {genres}} = await axios({
+        url: `genre/movie/list?api_key=${API_KEY}`,
+        baseURL: BASE_URL,
+    });
+    // return fetch;
+}
 
 plusPage() {
     this.pages += 1;
