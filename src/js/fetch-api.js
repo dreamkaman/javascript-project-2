@@ -3,7 +3,7 @@ const axios = require('axios').default;
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = 'e7920edacf2615b53852bc04e3a109f1';
 
-export default class ApiSeviseSearch {
+export default class ApiService {
 
 constructor() {
     this.searchFilm = '';
