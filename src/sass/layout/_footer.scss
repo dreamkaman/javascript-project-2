@@ -32,7 +32,7 @@
   display: inline;
   width: 14px;
   height: 13px;
-
+  fill: $main-orange-color;
 }
 
 .footer-text-next-line {
@@ -42,9 +42,8 @@
   margin-left: 10px;
 }
 
-
 .footer-text-link {
   margin-left: 5px;
   text-decoration: underline;
-
+  color: $main-footer-text-color;
 }
