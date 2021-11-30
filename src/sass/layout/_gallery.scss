@@ -1,4 +1,4 @@
-.page {
+.current-page {
     width: 40px;
     height: 40px;
     background-color: #FF6B08;
@@ -6,6 +6,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+border-radius: 10%;
+}
+
+.tui-ico-ellip{
+    margin: 0;
+    color: black;
+    vertical-align: 10px;
 }
 
 a {
@@ -18,38 +25,42 @@ a {
     align-items: center;
 }
 
+
+
+
+
 .inner-page-number{
     width: 40px;
     height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: black;
+
 }
 
-.inner-page-number{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.tui-ico-ellip{
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
+.tui-last,
 .tui-first{
     display: none;
 }
 
-.tui-last{
-    display: none;
-}
-
-.tui-next,
-.tui-prev{
+.arrow-btn{
     width: 40px;
     height: 40px;
     background-color: #F7F7F7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10%;
+}
+
+
+
+.tui-next,
+.tui-prev{
+
+    display: none;
 }
 
 .tui-ico-prev{
