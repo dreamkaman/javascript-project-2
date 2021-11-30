@@ -2,7 +2,7 @@ import ApiService from '../js/fetch-api';
 import galleryCardTemplate from '../template/card.hbs'
 
 const form = document.querySelector('.search-form');
-const gallery = document.querySelector('.gallery');
+const gallery = document.querySelector('.gallery-item');
 const input = document.querySelector('.search-input');
 
 const apiService = new ApiService();
