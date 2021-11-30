@@ -26,11 +26,9 @@ const searchContent = event => {
     const string = event.currentTarget.querySelector('.input-search').value.trim();
     if (string !== "") {
         apiService.resetPages();
-        apiService.resetLimit();
-        apiService.resetTotalLimit();
         apiService.name = string;
         console.log(apiService.name)
-        apiService.fetchPixbay().then(data => {
+        apiService.fetchFilmSearch().then(data => {
             if (data.totalHits === 0){
                 clearSearch();
                 const error = "<p>Search result not successful. Enter the correct movie name and</p>";
