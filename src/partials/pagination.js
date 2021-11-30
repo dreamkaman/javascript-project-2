@@ -11,7 +11,6 @@ var pagination2 = new Pagination(document.querySelector('#pagination'), {
     visiblePages: 5,
     centerAlign: true,
     lastItemClassName: 'last-child',
-    // firstItemClassName: '.is-hidden',
     template: {
         
         page: '<a href="#" data-page={{page}}><div class="inner-page-number">{{page}}</div></a>',
