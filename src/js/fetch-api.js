@@ -12,20 +12,23 @@ constructor() {
 }
 
 fetchFilmSearch = async (searchFilm) => {
-    const {data} = await axios({
-        url: `search/movie?api_key=${API_KEY}&language=en-US&query=${searchFilm}&page=${this.pages}&include_adult=false`,
+    const fetch = await axios({
+        url: `search/movie?api_key=${API_KEY}&language=en-US&query=${this.searchFilm}&page=${this.pages}&include_adult=false`,
         baseURL: BASE_URL,
     })
+    // console.log('data: ', data);
 
-    console.log('data: ', data);
-    // .then(response => {
-    //     console.log(response.data)
-    //     this.plusPage();
-    //     this.minusPage();
-    //     this.plusPages();
-    //     this.minusPages();
-    //     return response.data;  
-    // });
+
+    .then(response => {
+        console.log(response.data)
+        this.plusPage();
+        this.minusPage();
+        this.plusPages();
+        this.minusPages();
+        return response.data;  
+    });
+
+    return fetch;
     const {data: {genres}} = await axios({
         url: `genre/movie/list?api_key=${API_KEY}&language=en-US`,
         baseURL: BASE_URL,

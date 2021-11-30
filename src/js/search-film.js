@@ -1,7 +1,7 @@
 import ApiService from '../js/fetch-api';
 import galleryCardTemplate from '../template/card.hbs'
 
-const form = document.querySelector('#search-form');
+const form = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery');
 const input = document.querySelector('.search-input');
 
@@ -18,21 +18,21 @@ const clearSearch = () => {
 const searchContent = event => {
     event.preventDefault();
     clearSearch();
-    const string = event.currentTarget.querySelector('.input-search').value.trim();
+    const string = event.currentTarget.querySelector('.search-input').value.trim();
     if (string !== "") {
         apiService.resetPages();
-        apiService.name = string;
+        apiService.film = string;
         console.log(apiService.name)
         apiService.fetchFilmSearch().then(data => {
-            if (data.totalHits === 0){
-                clearSearch();
-                input.classList.add(".is-hidden")
-                form.innerHTML("beforeend", error);
-            }else {
-            clearSearch();
+            // if (data.page === 0){
+            //     clearSearch();
+            //     input.classList.add(".is-hidden")
+            //     form.innerHTML("beforeend", error);
+            // }else {
+            // clearSearch();
             renderGalleryCard(data);
             apiService.resetPages();
-            }})   
+            })   
             .catch(error => {
             console.log(error)});
     }else {
