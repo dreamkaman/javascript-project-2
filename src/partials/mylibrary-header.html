@@ -1,1 +1,26 @@
-<header>Hallo header!</header>
+<header class="header-second">
+  <div class="container header-container">
+    <nav class="nav">
+      <a class="logo link" href="./index.html">
+        <svg class="logo-icon">
+          <use href="./images/svg/symbol-defs.svg#icon-logo"></use>
+        </svg>
+        <p class="header-logo">Filmoteka</p>
+      </a>
+      <ul class="nav-list list">
+        <li class="nav-list-item">
+          <a href="./index.html" class="nav-link link">home</a>
+        </li>
+        <li class="nav-list-item selected-page">
+          <a href="./mylibrary.html" class="nav-link link">my library</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="header-library-btns">
+      <button type="button" class="library-btn active header-is-hidden" id="home-btn">
+        watched
+      </button>
+      <button type="button" class="library-btn header-is-hidden" id="library-btn">queue</button>
+    </div>
+  </div>
+</header>
