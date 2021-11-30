@@ -59,15 +59,18 @@ fetchFilmId = async (filmId) => {
     return fetch;
 }
 
-fetchFilmPopular = async () => {
-
-    const response = await axios({
-        url: `trending/all/week?api_key=${API_KEY}&language=en-US&page=${this.pages}`,
-        baseURL: BASE_URL,
-    });
+    fetchFilmPopular = async () => {
     
-    const data = await Object(response);
-       return  data;
+        const fetch = await axios({
+            url: `trending/all/week?api_key=${API_KEY}&language=en-US&page=${this.pages}`,
+            baseURL: BASE_URL,
+        }).then(response => {
+
+            return response.data;
+          
+        });
+
+        return fetch;
 
     }
 
