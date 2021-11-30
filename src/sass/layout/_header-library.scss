@@ -1,0 +1,95 @@
+.header-second {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url('../images/secondPage/mobile.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: $main-white-color;
+  background-position: 50%;
+
+  text-align: center;
+}
+
+@media screen and (min-device-pixel-ratio: 2) and (max-width: 767px),
+  screen and (min-resolution: 192dpi) and (max-width: 767px),
+  screen and (min-resolution: 2dppx) and (max-width: 767px) {
+  .header-second {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/secondPage/mobile@2x.jpg');
+    background-repeat: no-repeat;
+
+    background-size: cover;
+  }
+}
+@media screen and (min-width: 768px) {
+  .header-second {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/secondPage/tablet.jpg');
+  }
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    .header-second {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+        url('../images/secondPage/tablet@2x.jpg');
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .header-second {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/secondPage/pc.jpg');
+  }
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    .header-second {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+        url('../images/secondPage/pc@2x.jpg');
+    }
+  }
+}
+.header-library-btns {
+  display: flex;
+  justify-content: space-between;
+  @media screen and (min-width: 768px) {
+    justify-content: center;
+  }
+}
+
+.library-btn:not(:first-child) {
+  @media screen and (min-width: 768px) {
+    margin-left: 15px;
+  }
+}
+.library-btn {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+
+  text-align: center;
+  text-transform: uppercase;
+  color: $main-white-color;
+  background: inherit;
+
+  border: 1px solid $main-white-color;
+
+  border-radius: 5px;
+
+  padding-top: 14px;
+  padding-bottom: 12px;
+  width: 130px;
+
+  margin-top: 46px;
+
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    width: 136px;
+  }
+}
+
+.library-btn.active {
+  background: $main-orange-color;
+
+  border: 1px solid $main-orange-color;
+}
