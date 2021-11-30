@@ -18,28 +18,33 @@ const clearSearch = () => {
 const searchContent = event => {
     event.preventDefault();
     clearSearch();
-    const string = event.currentTarget.querySelector('.input-search').value.trim();
+    const string = event.currentTarget.querySelector('.search-input').value.trim();
     if (string !== "") {
         apiService.resetPages();
-        apiService.name = string;
-        console.log(apiService.name)
+        apiService.film = string;
+        console.log(apiService.film)
         apiService.fetchFilmSearch().then(data => {
-            if (data.totalHits === 0){
-                clearSearch();
-                input.classList.add(".is-hidden")
-                form.innerHTML("beforeend", error);
-            }else {
-            clearSearch();
+            // if (data.page === 0){
+            //     clearSearch();
+            //     input.classList.add(".is-hidden")
+            //     form.innerHTML("beforeend", error);
+            // }else {
+            // clearSearch();
+            console.log('data ', data);
+
             renderGalleryCard(data);
             apiService.resetPages();
-            }})   
+            })   
             .catch(error => {
             console.log(error)});
-    }else {
-        clearSearch();
+        }else {
+            clearSearch();
+        }
     }
-}
-
-//form.addEventListener('submit', searchContent);
+    apiService.fetchGenres().then(data => {
+        console.log(data.name);
+    })
+    
+form.addEventListener('submit', searchContent);
 
 console.log(apiService.fetchFilmPopular());

@@ -1,3 +1,6 @@
+import { Console, log } from 'console';
+import { async } from 'fast-glob';
+
 const axios = require('axios').default;
 
 const BASE_URL = 'https://api.themoviedb.org/3/';
@@ -12,27 +15,38 @@ constructor() {
 }
 
 fetchFilmSearch = async (searchFilm) => {
-    const {data} = await axios({
-        url: `search/movie?api_key=${API_KEY}&language=en-US&query=${searchFilm}&page=${this.pages}&include_adult=false`,
+    const fetch = await axios({
+        url: `search/movie?api_key=${API_KEY}&language=en-US&query=${this.searchFilm}&page=${this.pages}&include_adult=false`,
         baseURL: BASE_URL,
-    })
-
-    console.log('data: ', data);
-    // .then(response => {
-    //     console.log(response.data)
-    //     this.plusPage();
-    //     this.minusPage();
-    //     this.plusPages();
-    //     this.minusPages();
-    //     return response.data;  
-    // });
-    const {data: {genres}} = await axios({
-        url: `genre/movie/list?api_key=${API_KEY}`,
-        baseURL: BASE_URL,
+    }).then(response => {
+        console.log(response.data)
+        this.plusPage();
+        this.minusPage();
+        this.plusPages();
+        this.minusPages();
+        return response.data;  
     });
 
-    console.log('genres: ', genres);
+    return fetch;
+
+    // const {data: {genres}} = await axios({
+    //     url: `genre/movie/list?api_key=${API_KEY}&language=en-US`,
+    //     baseURL: BASE_URL,
+    // });
+
+    // console.log('genres: ', genres);
 }   
+
+fetchGenres = async () => {
+    const fetch = await axios({
+        url: `genre/movie/list?api_key=${API_KEY}&language=en-US`,
+        baseURL: BASE_URL,
+    }).then(response => {
+        console.log(response.data)
+        return response.data;
+    });
+    return fetch;
+}
 
 fetchFilmId = async (filmId) => {
     const fetch = await axios({
@@ -63,7 +77,7 @@ fetchFilmPopular = async () => {
     })
 
     const {data: {genres}} = await axios({
-        url: `genre/movie/list?api_key=${API_KEY}`,
+        url: `genre/movie/list?api_key=${API_KEY}&language=en-US`,
         baseURL: BASE_URL,
     });
     // return fetch;
