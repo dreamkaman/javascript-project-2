@@ -37,15 +37,22 @@ fetchFilmSearch = async (searchFilm) => {
     // console.log('genres: ', genres);
 }   
 
-fetchGenres = async () => {
-    const fetch = await axios({
+fetchGenresTV = async () => {
+    return await axios({
+        url:`genre/tv/list?api_key=${API_KEY}&language=en-US`,
+        baseURL: BASE_URL,
+    }).then(response => {
+        return response.data;
+    });
+}
+    
+fetchGenresMovie = async () => {
+    return await axios({
         url: `genre/movie/list?api_key=${API_KEY}&language=en-US`,
         baseURL: BASE_URL,
     }).then(response => {
-        console.log(response.data)
         return response.data;
     });
-    return fetch;
 }
 
 fetchFilmId = async (filmId) => {
