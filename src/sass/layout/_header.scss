@@ -29,13 +29,14 @@
 
 .nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: baseline;
 }
 
 .logo {
   display: flex;
   align-items: center;
+  margin-right: auto;
 }
 
 .logo-icon {
@@ -89,6 +90,31 @@
 
 .nav-list-item:first-child {
   margin-right: 40px;
+}
+
+.profile-btn {
+  background-color: transparent;
+  border: none;
+
+  cursor: pointer;
+
+  margin-left: 20px;
+}
+
+.profile-icon {
+  fill: $main-white-color;
+
+  width: 20px;
+  height: 20px;
+
+  transition-property: fill;
+  transition-duration: 250ms;
+  transition-timing-function: $timing-function;
+}
+
+.profile-btn:hover .profile-icon,
+.profile-btn:focus .profile-icon {
+  fill: $main-orange-color;
 }
 
 .search-form {
