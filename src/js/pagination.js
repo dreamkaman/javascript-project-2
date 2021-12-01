@@ -1,11 +1,15 @@
 
 import tui from 'tui-pagination';
 import Pagination from 'tui-pagination';
+import ApiService from '../js/fetch-api';
+
+let ourPagination = document.querySelector('#pagination')
+ourPagination.addEventListener('click', event=>{
+  console.log(event.target.textContent)
+})
 
 
-
-
-var pagination2 = new Pagination(document.querySelector('#pagination'), {
+var pagination2 = new Pagination(ourPagination, {
     totalItems: 500,
     itemsPerPage: 20,
     visiblePages: 5,
