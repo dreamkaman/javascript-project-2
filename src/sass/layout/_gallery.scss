@@ -33,8 +33,9 @@ img {
     .gallery {
         padding: 20px;
     }
-    .gallery-item:not(:last-child) {
-        margin-bottom: 20px;
+    
+    .card-photo {
+        margin-top: 20px;
     }
   
 @media screen and (min-width: 320px) and (max-width: 767px) {
@@ -47,43 +48,39 @@ img {
 
 }
 @media screen and (min-width: 768px) {
-  .gallery {
-    margin-left: 0;
-    margin-right: 0;
-    padding: 60px 70px 50px 70px;
+    .gallery {
+        padding: 60px 70px 50px 70px;
+    }
+    .gallery-item {
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: -30px;
+      margin-top: -30px;
   }
-  .gallery-box {
-    max-width: 620px;
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: -30px;
-    margin-top: -30px;
-  }
-  .gallery-item {
-    margin-left: 30px;
-    margin-top: 30px;
-    flex-basis: calc((100% - 60px) / 2);
-    width: 294px;
+  .card-photo {
+      margin-left: 30px;
+      margin-top: 30px;
+      flex-basis: calc((100% - 60px) / 2);
+      width: 294px;
+    }
   }
 }
+
 
 @media screen and (min-width: 1024px) {
-  .gallery {
-    max-width: 100%;
-    padding: 60px 70px 50px 70px;
+    .gallery {
+        padding: 60px 70px 50px 70px;
+    }
+    .gallery-item {
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: -30px;
+      margin-top: -30px;
   }
-  .gallery-box {
-    width: 100%;
-
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: -30px;
-    margin-top: -30px;
+  .card-photo {
+      margin-left: 30px;
+      margin-top: 30px;
+      flex-basis: calc((100% - 90px) / 3);
+      width: 294px;
+    }
   }
-  .gallery-item {
-    margin-left: 30px;
-    margin-top: 30px;
-    flex-basis: calc((100% - 90px) / 3);
-    width: 294px;
-  }
-}
