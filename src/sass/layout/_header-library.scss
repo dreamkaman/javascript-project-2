@@ -83,13 +83,34 @@
 
   cursor: pointer;
 
+  transition-property: color, border;
+  transition-duration: 250ms;
+  transition-timing-function: $timing-function;
+
   @media screen and (min-width: 768px) {
     width: 136px;
   }
 }
 
 .library-btn.active {
-  background: $main-orange-color;
+  background-color: $main-orange-color;
 
   border: 1px solid $main-orange-color;
+  transition-property: color, border;
+  transition-duration: 250ms;
+  transition-timing-function: $timing-function;
+}
+
+.library-btn:hover,
+.library-btn:focus {
+  border: 1px solid $main-orange-color;
+
+  color: $main-orange-color;
+}
+
+.library-btn.active:hover,
+.library-btn.active:focus {
+  border: 1px solid $main-white-color;
+
+  color: $main-white-color;
 }
