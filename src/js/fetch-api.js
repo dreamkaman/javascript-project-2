@@ -57,7 +57,7 @@ fetchGenresMovie = async () => {
 
 fetchFilmId = async (filmId) => {
     const fetch = await axios({
-        url: `movie/${filmId}?api_key=${API_KEY}&language=en-US`,
+        url: `movie/512195?api_key=${API_KEY}&language=en-US`,
         baseURL: BASE_URL,
     }).then(response => {
         this.resetFilmId;
