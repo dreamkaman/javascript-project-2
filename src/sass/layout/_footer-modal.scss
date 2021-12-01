@@ -5,18 +5,27 @@
   text-align: center;
   letter-spacing: 0.03em;
   margin-bottom: 30px;
-  color: var(--secondary-text-color);
+  color: #ff6b08;
+  border: 3px solid #ff6b08;
+  border-radius: 8px;
+  width: 260px;
+  margin-right: auto;
+  margin-left: auto;
+  font-style: italic;
 }
 .rubrics__team {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding-right: 40px;
+  padding-left: 100px;
+  // padding-right: 20px;
+  // width: calc((100% - 60px) / 3);
 }
 .team__item {
   display: block;
   margin-bottom: 40px;
+  margin-right: 100px;
 }
 .student__signature {
   text-align: center;
@@ -64,8 +73,8 @@
 }
 .sociallink__link:hover,
 .sociallink__link:focus {
-  background-color: rgb(50, 117, 205);
-  fill: green;
+  background-color: #ff6b08;
+  // fill: green;
 }
 .sociallink__link:not(:last-child) {
   margin-right: 10px;
@@ -80,4 +89,18 @@
 .images {
   width: 260px;
   height: 270px;
+}
+.footer-modal-back {
+  margin-left: 610px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  padding-right: 5px;
+  padding-left: 5px;
+  border: 2px solid #ff6b08;
+  border-radius: 5px;
+  vertical-align: middle;
+  color: #ff6b08;
+  display: block;
+  margin-bottom: 50px;
+  width: 120px;
 }
