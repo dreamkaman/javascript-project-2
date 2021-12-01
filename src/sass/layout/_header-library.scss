@@ -1,5 +1,5 @@
 .header-second .header-container {
-  padding-bottom: 65px;
+  padding: 46px 20px 65px 20px;
 }
 
 .header-second {
@@ -53,6 +53,7 @@
   }
 }
 .header-library-btns {
+  padding-top: 46px;
   display: flex;
   justify-content: space-between;
   @media screen and (min-width: 768px) {
@@ -82,8 +83,6 @@
   padding-top: 14px;
   padding-bottom: 12px;
   width: 130px;
-
-  margin-top: 46px;
 
   cursor: pointer;
 
