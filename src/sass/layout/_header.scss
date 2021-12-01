@@ -131,6 +131,14 @@
 
   background-color: transparent;
   border: none;
+  border-radius: 50%;
+
+  transition: background-color 250ms $timing-function;
+}
+
+.search-submit-btn:focus,
+.search-submit-btn:hover {
+  background-color: rgba($color: $main-white-color, $alpha: 0.03);
 }
 
 .error-text {
