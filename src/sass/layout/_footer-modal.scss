@@ -1,3 +1,83 @@
+body{
+  margin: 0;
+}
+
+
+
+.header-second-studens .header-container-studens {
+  padding: 46px 20px 65px 20px;
+}
+
+.header-second-studens {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url('../images/secondPage/mobile.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: $main-white-color;
+  background-position: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: center;
+  width: 100%;
+}
+
+@media screen and (min-device-pixel-ratio: 2) and (max-width: 767px),
+  screen and (min-resolution: 192dpi) and (max-width: 767px),
+  screen and (min-resolution: 2dppx) and (max-width: 767px) {
+  .header-second-studens {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/secondPage/mobile@2x.jpg');
+    background-repeat: no-repeat;
+
+    background-size: cover;
+  }
+}
+@media screen and (min-width: 768px) {
+  .header-second-studens {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/secondPage/tablet.jpg');
+  }
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    .header-second-studens {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+        url('../images/secondPage/tablet@2x.jpg');
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .header-second-studens {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/secondPage/pc.jpg');
+  }
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    .header-second-studens {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+        url('../images/secondPage/pc@2x.jpg');
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .rubrics {
   font-weight: bold;
   font-size: 28px;
@@ -5,15 +85,16 @@
   text-align: center;
   letter-spacing: 0.03em;
   margin-bottom: 30px;
-  color: #ff6b08;
+  color: white;
+  background-color: #ff6b08;
   border: 3px solid #ff6b08;
   border-radius: 8px;
   width: 260px;
   margin-right: auto;
   margin-left: auto;
-  font-style: italic;
 }
 .rubrics__team {
+  margin-top: 280px;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -30,8 +111,8 @@
 .student__signature {
   text-align: center;
   background-color: var(--white-background-color);
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 0px 0px 4px 4px;
@@ -52,7 +133,7 @@
   text-align: center;
   letter-spacing: 0.03em;
   color: var(--primary-text-color);
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 .sociallink__list {
   display: inline-flex;
