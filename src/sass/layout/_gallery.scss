@@ -123,3 +123,12 @@
     width: 294px;
   }
 }
+
+.card-no-image {
+  //background-color: rgb(228, 222, 222);
+  width: 274px;
+  height: 411px;
+  background-image: url(../images/No_image_poster.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
