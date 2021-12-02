@@ -26,7 +26,7 @@ import modalTemplate from '../template/modal.hbs';
       
     // });
     function toggleModal() {
-        refs.modal.classList.toggle('is-hidden');
+        refs.modal.classList.remove('is-hidden');
         apiService.fetchFilmId(1).then(data => {
         console.log('fetchFilmId(1) - ',data)
         filmTempate(data);
