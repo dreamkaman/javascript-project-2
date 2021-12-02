@@ -1,9 +1,7 @@
 .current-page {
   width: 40px;
   height: 40px;
-
   background-color: #ff6b08;
-
   color: white;
   display: flex;
   justify-content: center;
@@ -124,4 +122,14 @@
     flex-basis: calc((100% - 90px) / 3);
     width: 294px;
   }
+}
+
+.card-no-image {
+  //background-color: rgb(228, 222, 222);
+  width: 274px;
+  height: 411px;
+  background-image: url(../images/No_image_poster.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 5px;
 }
