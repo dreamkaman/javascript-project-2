@@ -12,6 +12,7 @@ import modalTemplate from '../template/modal.hbs';
 const apiService = new ApiService();
     
     refs.backdropBackground.addEventListener('click', toggleModalBackdrop);
+    
     refs.openModalBtn.addEventListener('click', toggleModal);
     
     const filmTempate  = film => {
@@ -28,7 +29,10 @@ function toggleModal(event) {
   console.log('event.target.nodeName - ', event.target.nodeName);
 
   if (event.target.nodeName === "IMG") {
-        refs.backdropBackground.classList.toggle('is-hidden');
+    refs.backdropBackground.classList.toggle('is-hidden');
+
+   // refs.modal.querySelector("1");
+
         apiService.fetchFilmId('566525').then(data => {
         console.log('fetchFilmId(566525) - ',data)
         filmTempate(data);
