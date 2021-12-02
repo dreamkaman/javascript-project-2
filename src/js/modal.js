@@ -25,8 +25,8 @@ import modalTemplate from '../template/modal.hbs';
 
     function toggleModal() {
         refs.backdropBackground.classList.toggle('is-hidden');
-        apiService.fetchFilmId(1).then(data => {
-        console.log('fetchFilmId(1) - ',data)
+        apiService.fetchFilmId('566525').then(data => {
+        console.log('fetchFilmId(566525) - ',data)
         filmTempate(data);
         const refs = {
           closeModalBtn: document.querySelector('.modal-close-btn'),
