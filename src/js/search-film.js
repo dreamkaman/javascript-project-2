@@ -36,18 +36,8 @@ const changeSomeDataArr = results => {
             el.release_date = (new Date(el.release_date)).getFullYear()
         } else { el.release_date = "Release date unknown"};//Date change
 
-    if (el.poster_path) {
-      el.poster_path = BASE_IMG_URL + el.poster_path; //Poster_path changes. Better background image.
-    } else {
-      el.poster_path = DEFAULT_IMG_PATH;
-    }
 
-    if (el.release_date) {
-      el.release_date = new Date(el.release_date).getFullYear();
-    } else {
-      el.release_date = 'Release date unknown';
-    } //Date change
-
+    
     // el.title = String.prototype.toUpperCase(el.title);
   });
 };

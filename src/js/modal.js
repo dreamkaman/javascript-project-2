@@ -30,17 +30,20 @@ function toggleModalBackdrop(event) {
 
 function toggleModal(event) {
 
-  console.dir(event.target.className);
+  //console.dir(event.target.className);
+
+  //console.log('event.target',event.target);
+
+  console.dir(event.target.dataset['card']);
+
 
   if (event.target.className === "card-img" || event.target.className === "card-no-image") {
-
-  //console.log(event.target.closest(".id-card").textContent);
+  
+    const id = event.target.dataset['card'];
   
   refs.backdropBackground.classList.toggle('is-hidden');
 
- // console.log(refs.modal.querySelector('#js-id').textContent);
-
-  apiService.fetchFilmId(370172).then(data => {
+  apiService.fetchFilmId(id).then(data => {
     console.log('fetchFilmId(1) - ',data)
     filmTempate(data);
     const refs = {
