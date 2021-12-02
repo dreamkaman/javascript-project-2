@@ -1,9 +1,7 @@
 import ApiService from '../js/fetch-api';
 import modalTemplate from '../template/modal.hbs';
-
 const WATCHED_STORAGE = 'watched-storage';
 const QUEUE_STORAGE = 'queue_storage';
-
 
 const refs = {
   openModalBtn: document.querySelector('[data-card-photo]'),
@@ -12,22 +10,40 @@ const refs = {
 };
 
 const apiService = new ApiService();
+
 refs.backdropBackground.addEventListener('click', toggleModalBackdrop);
+
 refs.openModalBtn.addEventListener('click', toggleModal);
 // refs.closeModalBtn.addEventListener('click', toggleModalClose);
-const filmTempate  = film => {
+const filmTempate = film => {
   console.log("ac", film);
   refs.modal.innerHTML = modalTemplate(film);
-}
-function toggleModalBackdrop (e) {
-  if(e.target.classList.contains('backdrop')) {
+};
+
+function toggleModalBackdrop(event) {
+
+  if (event.target.nodeName === "IMG") {
+    
     refs.backdropBackground.classList.toggle('is-hidden');
   }
-}
+};
 
-function toggleModal() {
+function toggleModal(event) {
+
+  //console.dir(event.target.className);
+
+  //console.log('event.target',event.target);
+
+  console.dir(event.target.dataset['card']);
+
+
+  if (event.target.className === "card-img" || event.target.className === "card-no-image") {
+  
+    const id = event.target.dataset['card'];
+  
   refs.backdropBackground.classList.toggle('is-hidden');
-  apiService.fetchFilmId(1).then(data => {
+
+  apiService.fetchFilmId(id).then(data => {
     console.log('fetchFilmId(1) - ',data)
     filmTempate(data);
     const refs = {
@@ -36,7 +52,8 @@ function toggleModal() {
     };
     refs.closeModalBtn.addEventListener('click', (e) => {
       refs.backdropBackground.classList.toggle('is-hidden');
-    });  
+    });
+    
     const watchedBtn = document.querySelector('.js-watched');
     const queueBtn = document.querySelector('.js-queue');
     const idModal = document.querySelector('#js-id'); 
@@ -47,7 +64,7 @@ function toggleModal() {
       }else if (localStorage.getItem(WATCHED_STORAGE) === localStorage.getItem(QUEUE_STORAGE)){
         localStorage.setItem(WATCHED_STORAGE, idModal.textContent);
         localStorage.removeItem(QUEUE_STORAGE, '');  
-      }else {
+      } else {
       localStorage.setItem(WATCHED_STORAGE, idModal.textContent)
       }
     })
@@ -65,4 +82,4 @@ function toggleModal() {
   })
   console.log('active');
 }
-
+}
