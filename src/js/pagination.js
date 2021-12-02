@@ -1,6 +1,7 @@
 
 import tui from 'tui-pagination';
 import Pagination from 'tui-pagination';
+import ApiService from '../js/fetch-api';
 
 let pagination2 = new Pagination(document.querySelector('#pagination'), {
     totalItems: 500,
