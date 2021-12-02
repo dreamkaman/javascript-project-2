@@ -1,6 +1,10 @@
 import { Console, log } from 'console';
 import { async } from 'fast-glob';
 
+import tui from 'tui-pagination';
+import Pagination from 'tui-pagination';
+
+
 const axios = require('axios').default;
 
 const BASE_URL = 'https://api.themoviedb.org/3/';
@@ -12,6 +16,8 @@ constructor() {
     this.searchFilm = '';
     this.searchFilmId = '';
     this.pages = 1;
+    this.totalResults = 0;
+    this.totalPages = 0;
 }
 
 fetchFilmSearch = async (searchFilm) => {
@@ -19,22 +25,16 @@ fetchFilmSearch = async (searchFilm) => {
         url: `search/movie?api_key=${API_KEY}&language=en-US&query=${this.searchFilm}&page=${this.pages}&include_adult=false`,
         baseURL: BASE_URL,
     }).then(response => {
-        console.log(response.data)
-        this.plusPage();
-        this.minusPage();
-        this.plusPages();
-        this.minusPages();
+        console.log('fetchFilmSearch - ', response.data)
+        // this.plusPage();
+        // this.minusPage();
+        // this.plusPages();
+        // this.minusPages();
         return response.data;  
     });
 
     return fetch;
 
-    // const {data: {genres}} = await axios({
-    //     url: `genre/movie/list?api_key=${API_KEY}&language=en-US`,
-    //     baseURL: BASE_URL,
-    // });
-
-    // console.log('genres: ', genres);
 }   
 
 fetchGenresTV = async () => {
@@ -66,13 +66,32 @@ fetchFilmId = async (filmId) => {
     return fetch;
 }
 
-    fetchFilmPopular = async () => {
+    fetchFilmPopularPage = async (currentPage) => {
     
         const fetch = await axios({
-            url: `trending/all/week?api_key=${API_KEY}&language=en-US&page=${this.pages}`,
+            url: `trending/movie/week?api_key=${API_KEY}&language=en-US&page=${currentPage}`,
             baseURL: BASE_URL,
         }).then(response => {
 
+            console.log('fetchFilmPopularPage - response -', response);
+
+            return response.data;
+          
+        });
+
+        return fetch;
+
+    }
+
+        fetchFilmPopular = async () => {
+    
+        const fetch = await axios({
+            url: `trending/movie/week?api_key=${API_KEY}&language=en-US`,
+            baseURL: BASE_URL,
+        }).then(response => {
+
+            console.log('fetchFilmPopular - response -', response);
+            
             return response.data;
           
         });
@@ -104,6 +123,22 @@ resetPages(){
 
 resetFilmId(){
     this.searchFilmId = '';
+}
+
+setTotalRes(newTotalResults) {
+    return this.totalResults = newTotalResults;
+}
+
+getTotalRes() {
+    return this.totalResults;
+}
+
+setTotalPages(newTotalPages) {
+    return this.totalPages = newTotalPages;
+}
+    
+getTotalPages() {
+    return this.totalPages;
 }
 
 get film() {
