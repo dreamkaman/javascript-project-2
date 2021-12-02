@@ -1,32 +1,32 @@
-{{#each this}}
-  <section class="modal visually-hidden">
-    <div class="modal-box">
-    <button type="button" class="modal-close-btn"><svg class="modal-svg" width="30px"><use
+{{#with this}}
+    <button type="button" class="modal-close-btn" data-close>X<svg class="modal-svg" width="30px"><use
           href="./images/sprite.svg#icon-close"
         ></use></svg></button>
     <div class="modal-box-main">
       <div class="modal-img-box">
-        <img src="{{poster_path}}" class="modal-image-film" alt="film" />
+        <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2{{poster_path}}" class="modal-image-film" alt="film" />
       </div>
       <div class="modal-info">
         <h1 class="modal-title">{{title}}</h1>
         <div class="modal-lists-main">
           <ul class="modal-name-info list">
-            <li>Vote/Votes</li>
-            <li>Popularity</li>
-            <li>Original Title</li>
-            <li>Genre</li>
+            <li class="modal-list">Vote/Votes</li>
+            <li class="modal-list">Popularity</li>
+            <li class="modal-list">Original Title</li>
+            <li class="modal-list">Genre</li>
           </ul>
           <ul class="modal-name-info-content list">
-            <li><span class="modal-rating-film">{{vote_average}}</span><span class="modal-slash">/</span>{{vote_count}}</li>
-            <li>{{popularity}}</li>
-            <li>{{original_title}}</li>
-            <li>{{genre.name}}</li>
+            <li class="modal-list"><span class="modal-rating-film">{{vote_average}}</span><span class="modal-slash">/</span>{{vote_count}}</li>
+            <li class="modal-list">{{popularity}}</li>
+            <li class="modal-list">{{original_title}}</li>
+            
+            <li class="modal-list">{{#each genres}}{{name}}{{/each}}</li>
+            
           </ul>
         </div>
         <div class="modal-about-box">
-          <h2>ABOUT</h2>
-          <p>{{overview}}</p>
+          <h2 class="madal-about">ABOUT</h2>
+          <p class="modal-text">{{overview}}</p>
         </div>
         <div class="modal-btns">
           <button type="submit" class="modal-btn js-watched">ADD TO WATCHED</button>
@@ -34,6 +34,4 @@
         </div>
       </div>
     </div>
-    </div>
-  </section>
-{{/each}}
+{{/with}}
