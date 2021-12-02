@@ -21,13 +21,17 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 const authBtn = document.querySelector('.profile-btn');
+const authProfileIcon = document.querySelector('.profile-icon')
 const signIn = document.querySelector('.backdrop-auth');
 const signUp = document.querySelector('.backdrop-auth-reg')
 const toReg = document.querySelector('.register-btn');
 const toLog = document.querySelector('.login-btn');
+const closeLogBtn = document.querySelector('.modal-auth-close-btn');
+const closeRegBtn = document.querySelector('.modal-auth-reg-close-btn');
 
 const openAuthSighIn = () => {
   signIn.classList.remove('hidden');
+  authProfileIcon.classList.add('active');
 }
 
 const toRegForm = () => {
@@ -40,6 +44,18 @@ const toLogForm = () => {
   signIn.classList.remove('hidden');
 }
 
+const closeLogForm = () => {
+  signIn.classList.add('hidden');
+  authProfileIcon.classList.remove('active');
+}
+
+const closeRegForm = () => {
+  signUp.classList.add('hidden');
+  authProfileIcon.classList.remove('active');
+}
+
 authBtn.addEventListener('click', openAuthSighIn);
 toReg.addEventListener('click', toRegForm);
 toLog.addEventListener('click', toLogForm);
+closeLogBtn.addEventListener('click', closeLogForm);
+closeRegBtn.addEventListener('click', closeRegForm)

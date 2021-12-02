@@ -112,6 +112,10 @@
   transition-timing-function: $timing-function;
 }
 
+.profile-icon.active {
+  fill: $main-orange-color;
+}
+
 .profile-btn:hover .profile-icon,
 .profile-btn:focus .profile-icon {
   fill: $main-orange-color;
