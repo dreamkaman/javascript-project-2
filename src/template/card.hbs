@@ -1,7 +1,7 @@
 {{#each this}}
 <div class="card-photo">
 <div class="card-no-image">
-    <img src="{{poster_path}}" alt="{{title}}" loading="lazy" />
+    <img class="card-img" src="{{poster_path}}" alt="{{title}}" loading="lazy" />
     </div>
     <div class="card-info">
         <p class="card-name">
@@ -10,6 +10,7 @@
         <p class="card-genre-date">
             {{genre_ids}} | {{release_date}}
         </p>
+        <p class="id-card is-hidden"></p>
     </div>
 </div>
 {{/each}}
