@@ -11,21 +11,17 @@
   border-radius: 10%;
 }
 
-
 .tui-ico-ellip {
   margin: 0;
   color: black;
   vertical-align: 10px;
 }
 
-
 .tui-pagination {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-
 
 .inner-page-number {
   width: 40px;
@@ -35,7 +31,6 @@
   align-items: center;
   color: black;
 }
-
 
 .tui-last,
 .tui-first {
@@ -54,13 +49,10 @@
   cursor: pointer;
 }
 
-
-
 .tui-next,
 .tui-prev {
   display: none;
 }
-
 
 // .gallery-empty-img {
 //   // visibility: hidden;//================================================???????
@@ -71,24 +63,24 @@
   box-shadow: 4px 6px 8px 0px rgba(34, 60, 80, 0.2);
 }
 .card-info {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.17;
-    margin-top: 10px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  margin-top: 10px;
 }
 .card-photo {
-    border-radius: 5px;
-    cursor: pointer;
+  border-radius: 5px;
+  cursor: pointer;
 }
 img {
-    border-radius: 5px;
-    cursor: pointer;
+  border-radius: 5px;
+  cursor: pointer;
 }
 .card-genre-date {
-    color: $main-orange-color;
-    margin-top: 5px;
-    cursor: pointer;
+  color: $main-orange-color;
+  margin-top: 5px;
+  cursor: pointer;
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .gallery {
@@ -99,36 +91,45 @@ img {
   }
 }
 @media screen and (min-width: 768px) {
-    .gallery {
-        padding: 60px 70px 50px 70px;
-    }
-    .gallery-item {
-      display: flex;
-      flex-wrap: wrap;
-      margin-left: -30px;
-      margin-top: -30px;
+  .gallery {
+    padding: 60px 70px 50px 70px;
+  }
+  .gallery-item {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -30px;
+    margin-top: -30px;
   }
   .card-photo {
-      margin-left: 30px;
-      margin-top: 30px;
-      flex-basis: calc((100% - 60px) / 2);
-      width: 294px;
-    }
+    margin-left: 30px;
+    margin-top: 30px;
+    flex-basis: calc((100% - 60px) / 2);
+    width: 294px;
   }
+}
 @media screen and (min-width: 1024px) {
-    .gallery {
-        padding: 60px 70px 50px 70px;
-    }
-    .gallery-item {
-      display: flex;
-      flex-wrap: wrap;
-      margin-left: -30px;
-      margin-top: -30px;
+  .gallery {
+    padding: 60px 70px 50px 70px;
+  }
+  .gallery-item {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -30px;
+    margin-top: -30px;
   }
   .card-photo {
-      margin-left: 30px;
-      margin-top: 30px;
-      flex-basis: calc((100% - 90px) / 3);
-      width: 294px;
-    }
+    margin-left: 30px;
+    margin-top: 30px;
+    flex-basis: calc((100% - 90px) / 3);
+    width: 294px;
   }
+}
+
+.card-no-image {
+  background-color: rgb(228, 222, 222);
+  width: 274px;
+  height: 411px;
+  background-image: url(../images/No_image_poster.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
