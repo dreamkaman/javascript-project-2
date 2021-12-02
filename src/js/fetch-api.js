@@ -52,8 +52,8 @@ export default class ApiService {
 
   fetchFilmId = async filmId => {
     const fetch = await axios({
-      url: `movie/512195?api_key=${API_KEY}&language=en-US`,
-      baseURL: BASE_URL,
+        url: `movie/${filmId}?api_key=${API_KEY}&language=en-US`,
+        baseURL: BASE_URL,
     }).then(response => {
       this.resetFilmId;
       return response.data;

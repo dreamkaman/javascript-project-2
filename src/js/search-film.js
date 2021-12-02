@@ -6,6 +6,7 @@ import Pagination from 'tui-pagination';
 
 const DEFAULT_IMG_PATH = 'https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png';
 const BASE_IMG_URL = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2';
+
 const form = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery-item');
 const input = document.querySelector('.search-input');
@@ -15,17 +16,25 @@ const input = document.querySelector('.search-input');
 const apiService = new ApiService();
 
 const changeSomeDataArr = results => {
-  results.forEach(el => {
-    el.genre_ids.forEach((genre, ind, arr) => {
-      for (let i = 0; i < genres.length; i += 1) {
-        if (genre === genres[i].id) {
-          arr[ind] = genres[i].name;
-          console.log('Opa!');
-          break;
-        }
-      }
-    });
-    el.genre_ids = el.genre_ids.join(', '); //Genres change
+    results.forEach(el => {
+        el.genre_ids.forEach((genre, ind, arr) => {
+            for (let i = 0; i < genres.length; i += 1) {
+                if (genre === genres[i].id) {
+                    arr[ind] = genres[i].name;
+                    console.log("Opa!")
+                    break;
+                }
+            }
+        });
+        el.genre_ids = el.genre_ids.join(', ');//Genres change
+
+        if (el.poster_path) {
+            el.poster_path = BASE_IMG_URL + el.poster_path
+        };
+
+        if (el.release_date) {
+            el.release_date = (new Date(el.release_date)).getFullYear()
+        } else { el.release_date = "Release date unknown"};//Date change
 
     if (el.poster_path) {
       el.poster_path = BASE_IMG_URL + el.poster_path; //Poster_path changes. Better background image.
