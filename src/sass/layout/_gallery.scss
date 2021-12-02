@@ -85,6 +85,10 @@
   .gallery {
     padding: 20px;
   }
+  .gallery-item {
+    flex-direction: column;
+    align-items: center;
+  }
   .gallery-item:not(:last-child) {
     margin-bottom: 20px;
   }
