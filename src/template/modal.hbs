@@ -7,7 +7,9 @@
        </button>
     <div class="modal-box-main">
       <div class="modal-img-box">
+        {{#if poster_path}}
         <img class="modal-img" src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2{{poster_path}}" class="modal-image-film" alt="film" />
+        {{/if}}
       </div>
       <div class="modal-info">
         <h1 class="modal-title">{{title}}</h1>
@@ -35,6 +37,7 @@
           <button type="submit" class="modal-btn js-watched">ADD TO WATCHED</button>
           <button type="submit" class="modal-btn js-queue">ADD TO QUEUE</button>
         </div>
+        <p id="js-id" class="is-hidden">{{id}}</p>
       </div>
     </div>
 {{/with}}
