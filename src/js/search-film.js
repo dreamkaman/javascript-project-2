@@ -5,7 +5,6 @@ import tui from 'tui-pagination';
 import Pagination from 'tui-pagination';
 
 
-const DEFAULT_IMG_PATH = "https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png";
 const BASE_IMG_URL = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2";
 const form = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery-item');
@@ -30,9 +29,7 @@ const changeSomeDataArr = results => {
         el.genre_ids = el.genre_ids.join(', ');//Genres change
 
         if (el.poster_path) {
-            el.poster_path = BASE_IMG_URL + el.poster_path;//Poster_path changes. Better background image.
-        } else {
-            el.poster_path = DEFAULT_IMG_PATH;
+            el.poster_path = BASE_IMG_URL + el.poster_path
         };
 
         if (el.release_date) {
