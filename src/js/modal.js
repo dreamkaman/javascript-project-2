@@ -9,21 +9,25 @@ import modalTemplate from '../template/modal.hbs';
       backdropBackground: document.querySelector('#backdrop'),
     };
   
-    const apiService = new ApiService();
+const apiService = new ApiService();
+    
     refs.backdropBackground.addEventListener('click', toggleModalBackdrop);
     refs.openModalBtn.addEventListener('click', toggleModal);
-    // refs.closeModalBtn.addEventListener('click', toggleModalClose);
+    
     const filmTempate  = film => {
         console.log("ac", film);
         refs.modal.innerHTML = modalTemplate(film);
     }
-    function toggleModalBackdrop (e) {
-      if(e.target.classList.contains('backdrop')) {
+    function toggleModalBackdrop (event) {
+      if(event.target.nodeName === "IMG") {
         refs.backdropBackground.classList.toggle('is-hidden');
       }
     }
 
-    function toggleModal() {
+function toggleModal(event) {
+  console.log('event.target.nodeName - ', event.target.nodeName);
+
+  if (event.target.nodeName === "IMG") {
         refs.backdropBackground.classList.toggle('is-hidden');
         apiService.fetchFilmId('566525').then(data => {
         console.log('fetchFilmId(566525) - ',data)
@@ -32,11 +36,13 @@ import modalTemplate from '../template/modal.hbs';
           closeModalBtn: document.querySelector('.modal-close-btn'),
           backdropBackground: document.querySelector('#backdrop'),
         };
-        refs.closeModalBtn.addEventListener('click', (e) => {
+        refs.closeModalBtn.addEventListener('click', e => {
           refs.backdropBackground.classList.toggle('is-hidden');
         });  
         })
         console.log('active');
+      }
+        
       }
 
       
