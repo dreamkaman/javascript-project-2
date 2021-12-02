@@ -49,6 +49,7 @@ body {
 //     pointer-events: none;
 // }
 .modal-close-btn {
+    fill: black;
     position: absolute;
     top: 2%;
     right: 2%;
@@ -67,9 +68,8 @@ body {
     // transition: background-color $transition-duration $timing-function;
     // background-image: url('./images/sprite.svg#icon-close');
     background-color: #fff;
-    background-position: center;
-    background-size: 60%;
-    background-repeat: no-repeat; 
+
+
 
 }
 .modal-box-main {
@@ -83,6 +83,7 @@ body {
 }
 .modal-img {
     // height: 478px;
+
 }
 .modal-image-film {
     border-radius: 5px;

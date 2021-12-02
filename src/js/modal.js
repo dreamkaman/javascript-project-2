@@ -17,7 +17,6 @@ import modalTemplate from '../template/modal.hbs';
         console.log("ac", film);
         refs.modal.innerHTML = modalTemplate(film);
     }
-
     function toggleModalBackdrop (e) {
       if(e.target.classList.contains('backdrop')) {
         refs.backdropBackground.classList.toggle('is-hidden');
@@ -26,7 +25,6 @@ import modalTemplate from '../template/modal.hbs';
 
     function toggleModal() {
         refs.backdropBackground.classList.toggle('is-hidden');
-
         apiService.fetchFilmId(1).then(data => {
         console.log('fetchFilmId(1) - ',data)
         filmTempate(data);
@@ -41,5 +39,4 @@ import modalTemplate from '../template/modal.hbs';
         console.log('active');
       }
 
-     
       
