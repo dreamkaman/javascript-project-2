@@ -6,10 +6,13 @@
     left: 0;
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.2);
-    transition: opacity 250ms var(--time-cubic), visibility 250ms var(--time-cubic);
+    transition: all 500ms, visibility 500ms;
+    overflow-y: auto;
+    overflow-x: hidden;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+
 }
 .backdrop.is-hidden {
     opacity: 0;
@@ -28,7 +31,6 @@
     margin-top: 60px;
     background-color: $main-white-color;
     border: 1px solid $main-black-text-color;
-
 }
 .use-img {
     z-index: 100;
@@ -64,7 +66,7 @@
     margin-right: 30px;
 }
 
-.modal-image-film {
+.modal-img {
     border-radius: 5px;
 }
 .modal-info {
@@ -155,7 +157,7 @@
 }
 .modal-btn:hover,
 .modal-btn:focus {
-    background-color: $main-error-color;
+    background-color: $main-orange-color;
     color:$main-white-color;
     border: none;
     cursor: pointer;
