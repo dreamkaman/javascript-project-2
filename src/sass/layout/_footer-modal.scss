@@ -5,7 +5,7 @@
 
 
 .header-second-studens .header-container-studens {
-  padding: 46px 20px 65px 20px;
+  padding: 40px 20px ;
 }
 
 .header-second-studens {
@@ -20,6 +20,8 @@
   left: 0;
   text-align: center;
   width: 100%;
+  max-height: 255px;
+  transition: all 250ms linear;
 }
 //s
 
