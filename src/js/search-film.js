@@ -10,7 +10,7 @@ const BASE_IMG_URL = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2';
 const form = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery-item');
 const input = document.querySelector('.search-input');
-
+let lastPage;
 
 
 const apiService = new ApiService();
@@ -94,7 +94,8 @@ apiService.fetchFilmPopular().then(data => {
           page: '<a href="#" data-page={{page}}><div class="inner-page-number">{{page}}</div></a>',
           currentPage: '<span class="current-page">{{page}}</span>',
           moveButton: ({ type }) => {
-            let lastPage = data.total_pages; //apiService.getTotalRes()/20;
+            lastPage = data.total_pages; //apiService.getTotalRes()/20;
+            console.log(lastPage)
             let template = ' ';
 
             if (type === 'next') {
@@ -276,7 +277,7 @@ document.querySelector('#pagination').addEventListener('click', event => {
     }
     if (tuiBtn.dataset.type === 'last') {
         clearSearch();
-        apiService.page = apiService.getTotalPages()
+        apiService.page = lastPage
       // apiService.page -= 1
         apiService.fetchFilmSearch().then(data => {
           // apiService.minusPage();
@@ -332,8 +333,7 @@ document.querySelector('#pagination').addEventListener('click', event => {
         if (tuiBtn.dataset.type === 'last') {
             console.log("================================", event.target)
             clearSearch();
-            apiService.page = apiService.getTotalPages()
-          // apiService.page -= 1
+            apiService.page = lastPage;
             apiService.fetchFilmPopular().then(data => {
               // apiService.minusPage();
                 renderGalleryCard(data);
