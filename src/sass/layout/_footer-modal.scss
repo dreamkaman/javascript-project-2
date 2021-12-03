@@ -2,10 +2,8 @@
 //   margin: 0;
 // }
 
-
-
 .header-second-studens .header-container-studens {
-  padding: 40px 20px ;
+  padding: 40px 20px;
 }
 
 .header-second-studens {
@@ -65,21 +63,9 @@
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.footer-modal-back {
+  margin-bottom: 30px;
+}
 
 .rubrics {
   font-weight: bold;
@@ -188,12 +174,12 @@
   transition: 250ms;
 }
 
-.footer-modal-back:hover{
+.footer-modal-back:hover {
   color: white;
   background-color: #ff6b08;
 }
 
-.container-for-btn{
+.container-for-btn {
   display: flex;
   justify-content: center;
   align-items: center;
