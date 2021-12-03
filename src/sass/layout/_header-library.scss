@@ -1,0 +1,107 @@
+.header-second-studens .header-container {
+  padding: 46px 20px 65px 20px;
+
+}
+
+
+
+.header-second {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url('../images/secondPage/mobile.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: $main-white-color;
+  background-position: 50%;
+  text-align: center;
+
+}
+
+
+
+header.sticky {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url('../images/secondPage/mobile.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: $main-white-color;
+  background-position: 50%;
+  text-align: center;
+  max-height: 100px;
+}
+
+header.sticky .header-library-btns{
+  display: inline;
+}
+
+
+header.sticky .header-container-studens{
+  padding: 14px 20px 65px 20px;
+}
+
+
+
+.header-library-btns {
+  padding-top: 46px;
+  display: flex;
+  justify-content: space-between;
+  @media screen and (min-width: 768px) {
+    justify-content: center;
+  }
+}
+
+.library-btn:not(:first-child) {
+  @media screen and (min-width: 768px) {
+    margin-left: 15px;
+  }
+}
+.library-btn {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+
+  text-align: center;
+  text-transform: uppercase;
+  color: $main-white-color;
+  background: inherit;
+
+  border: 1px solid $main-white-color;
+
+  border-radius: 5px;
+
+  padding-top: 14px;
+  padding-bottom: 12px;
+  width: 130px;
+
+  cursor: pointer;
+
+  transition-property: color, border;
+  transition-duration: 250ms;
+  transition-timing-function: $timing-function;
+
+  @media screen and (min-width: 768px) {
+    width: 136px;
+  }
+}
+
+.library-btn.active {
+  background-color: $main-orange-color;
+
+  border: 1px solid $main-orange-color;
+  transition-property: color, border;
+  transition-duration: 250ms;
+  transition-timing-function: $timing-function;
+}
+
+.library-btn:hover,
+.library-btn:focus {
+  border: 1px solid $main-orange-color;
+
+  color: $main-orange-color;
+}
+
+.library-btn.active:hover,
+.library-btn.active:focus {
+  border: 1px solid $main-white-color;
+
+  color: $main-white-color;
+}

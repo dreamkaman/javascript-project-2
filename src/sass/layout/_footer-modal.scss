@@ -1,0 +1,183 @@
+
+.header-second-studens .header-container-studens {
+  padding: 40px 20px;
+}
+
+.header-second-studens {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url('../images/secondPage/mobile.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: $main-white-color;
+  background-position: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  max-height: 255px;
+  transition: all 250ms linear;
+}
+//s
+
+@media screen and (min-device-pixel-ratio: 2) and (max-width: 767px),
+  screen and (min-resolution: 192dpi) and (max-width: 767px),
+  screen and (min-resolution: 2dppx) and (max-width: 767px) {
+  .header-second-studens {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/secondPage/mobile@2x.jpg');
+    background-repeat: no-repeat;
+
+    background-size: cover;
+  }
+}
+@media screen and (min-width: 768px) {
+  .header-second-studens {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/secondPage/tablet.jpg');
+  }
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    .header-second-studens {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+        url('../images/secondPage/tablet@2x.jpg');
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .header-second-studens {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/secondPage/pc.jpg');
+  }
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    .header-second-studens {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+        url('../images/secondPage/pc@2x.jpg');
+    }
+  }
+}
+
+.footer-modal-back {
+  margin-bottom: 30px;
+}
+
+.rubrics {
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 1.18;
+  text-align: center;
+  letter-spacing: 0.03em;
+  margin-bottom: 30px;
+  color: white;
+  width: 260px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.rubrics__team {
+  margin-top: 280px;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-left: 100px;
+  // padding-right: 20px;
+  // width: calc((100% - 60px) / 3);
+}
+.team__item {
+  display: block;
+  margin-bottom: 40px;
+  margin-right: 100px;
+}
+.student__signature {
+  text-align: center;
+  background-color: var(--white-background-color);
+  padding-top: 15px;
+  padding-bottom: 15px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 0px 0px 4px 4px;
+}
+.student__names {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.19;
+  text-align: center;
+  letter-spacing: 0.03em;
+  margin-bottom: 10px;
+  color: var(--secondary-text-color);
+}
+.student__professions {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 1.19;
+  text-align: center;
+  letter-spacing: 0.03em;
+  color: var(--primary-text-color);
+  margin-bottom: 8px;
+}
+.sociallink__list {
+  display: inline-flex;
+  justify-content: space-between;
+  padding-right: 40px;
+}
+.sociallink__element {
+  display: block;
+}
+.sociallink__link {
+  width: 44px;
+  height: 44px;
+  display: block;
+  border-radius: 50%;
+  padding: 12px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sociallink__link:hover,
+.sociallink__link:focus {
+  background-color: #ff6b08;
+  // fill: green;
+}
+.sociallink__link:not(:last-child) {
+  margin-right: 10px;
+}
+.sociallink__link:hover .sociallink__icon,
+.sociallink__link:focus .sociallink__icon {
+  fill: white;
+}
+.sociallink__icon {
+  fill: #afb1b8;
+}
+.images {
+  width: 260px;
+  height: 270px;
+  border-radius: 5px 5px 0px 0px;
+  // border-bottom-right-radius: 0;
+  // border-bottom-left-radius: 0;
+}
+.footer-modal-back {
+  padding-bottom: 15px;
+  padding-top: 15px;
+  padding-right: 5px;
+  padding-left: 32px;
+  border: 2px solid #ff6b08;
+  border-radius: 5px;
+  vertical-align: middle;
+  color: #ff6b08;
+  // display: block;
+  width: 120px;
+  transition: 250ms;
+}
+
+.footer-modal-back:hover {
+  color: white;
+  background-color: #ff6b08;
+}
+
+.container-for-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
