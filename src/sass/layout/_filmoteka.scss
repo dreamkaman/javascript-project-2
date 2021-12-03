@@ -1,5 +1,21 @@
+.gallery-section {
+    padding: 60px 0;
+}
+
 .filmoteka-gallery{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    margin-top: -30px;
+}
+
+@media screen and (max-width: 767px) {
+    .gallery-section .card-photo {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .filmoteka-gallery {
+        margin-left: -30px;
+    }
 }
