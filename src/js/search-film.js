@@ -4,7 +4,7 @@ import galleryCardTemplate from '../template/card.hbs';
 import tui from 'tui-pagination';
 import Pagination from 'tui-pagination';
 
-const DEFAULT_IMG_PATH = 'https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png';
+// const DEFAULT_IMG_PATH = 'https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png';
 const BASE_IMG_URL = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2';
 
 const form = document.querySelector('.search-form');
@@ -16,28 +16,42 @@ let lastPage;
 const apiService = new ApiService();
 
 const changeSomeDataArr = results => {
-    results.forEach(el => {
-        el.genre_ids.forEach((genre, ind, arr) => {
-            for (let i = 0; i < genres.length; i += 1) {
-                if (genre === genres[i].id) {
-                    arr[ind] = genres[i].name;
-                    console.log("Opa!")
-                    break;
-                }
-            }
-        });
-        el.genre_ids = el.genre_ids.join(', ');//Genres change
+  results.forEach(el => {
+    el.genre_ids.forEach((genre, ind, arr) => {
+      for (let i = 0; i < genres.length; i += 1) {
+        if (genre === genres[i].id) {
+          arr[ind] = genres[i].name;
+          console.log("Opa!")
+          break;
+        }
+      }
+    });
 
-        if (el.poster_path) {
-            el.poster_path = BASE_IMG_URL + el.poster_path
-        };
+    if (el.genre_ids.length) {
 
-        if (el.release_date) {
-            el.release_date = (new Date(el.release_date)).getFullYear()
-        } else { el.release_date = "Release date unknown"};//Date change
+      el.genre_ids = el.genre_ids.join(', ');//Genres change
+
+    } else {
+
+      // el.genre_ids = "-";
+
+      el.genre_ids = "Genres unknown";
+
+    };
+
+    if (el.poster_path) {
+      el.poster_path = BASE_IMG_URL + el.poster_path;
+    };
+
+    if (el.release_date) {
+      el.release_date = (new Date(el.release_date)).getFullYear()
+    } else {
+      // el.release_date = "-";
+      el.release_date = "Release date unknown"
+    };//Date change
 
 
-    
+
     // el.title = String.prototype.toUpperCase(el.title);
   });
 };
@@ -60,9 +74,11 @@ apiService.fetchGenresMovie().then(data => {
 // console.log('const genres - ', genres);
 
 const renderGalleryCard = searchName => {
+
   console.log('searchName.results - ', searchName.results);
 
-  console.log('changeSomeDataArr - ', changeSomeDataArr(searchName.results));
+  changeSomeDataArr(searchName.results);
+
 
   gallery.insertAdjacentHTML('beforeend', galleryCardTemplate(searchName.results));
 };
@@ -71,55 +87,61 @@ const clearSearch = () => {
   gallery.innerHTML = '';
 };
 
+
+
 apiService.fetchFilmPopular().then(data => {
-    renderGalleryCard(data);
-    
-    let pagination2 = new Pagination(document.querySelector('#pagination'), {
-        totalItems: data.total_results, //500
-        itemsPerPage: 20,
-        visiblePages: 5,
-        centerAlign: true,
-        lastItemClassName: 'last-child-tui',
-        template: {
-          page: '<a href="#" data-page={{page}}><div class="inner-page-number">{{page}}</div></a>',
-          currentPage: '<span class="current-page">{{page}}</span>',
-          moveButton: ({ type }) => {
-            lastPage = data.total_pages; //apiService.getTotalRes()/20;
-            console.log(lastPage)
-            let template = ' ';
 
-            if (type === 'next') {
-              template =
-                '<a href="#" id="next" data-type="next" class="arrow-btn"><svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.333 8h9.334M8 12.667 12.667 8 8 3.333" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg></a>';
-            }
+  console.log('data there - ', data);
+  //changeSomeDataArr(data.results);
 
-            //   if (type === 'first') {
-            //     template =
-            //       '<span>first</span>'
+  renderGalleryCard(data);
 
-            //   }
+  let pagination2 = new Pagination(document.querySelector('#pagination'), {
+    totalItems: data.total_results, //500
+    itemsPerPage: 20,
+    visiblePages: 5,
+    centerAlign: true,
+    lastItemClassName: 'last-child-tui',
+    template: {
+      page: '<a href="#" data-page={{page}}><div class="inner-page-number">{{page}}</div></a>',
+      currentPage: '<span class="current-page">{{page}}</span>',
+      moveButton: ({ type }) => {
+        lastPage = data.total_pages; //apiService.getTotalRes()/20;
+        console.log(lastPage)
+        let template = ' ';
 
-            if (type === 'prev') {
-              template =
-                '<a href="#" data-type="prev" class="arrow-btn"><svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.667 8H3.333M8 12.667 3.333 8 8 3.333" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg></a>';
-            }
+        if (type === 'next') {
+          template =
+            '<a href="#" id="next" data-type="next" class="arrow-btn"><svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.333 8h9.334M8 12.667 12.667 8 8 3.333" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg></a>';
+        }
 
-            if (type === 'last') {
-              template = `<a data-type="last" class="inner-page-number">${lastPage}</a>`;
-            }
-            if (type === 'first') {
-              if (true) {
-              }
-              template = `<a data-type="first" class="inner-page-number">1</a>`;
-            }
-            return template;
-          },
-        },
-      });
+        //   if (type === 'first') {
+        //     template =
+        //       '<span>first</span>'
+
+        //   }
+
+        if (type === 'prev') {
+          template =
+            '<a href="#" data-type="prev" class="arrow-btn"><svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.667 8H3.333M8 12.667 3.333 8 8 3.333" stroke="#000" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/></svg></a>';
+        }
+
+        if (type === 'last') {
+          template = `<a data-type="last" class="inner-page-number">${lastPage}</a>`;
+        }
+        if (type === 'first') {
+          if (true) {
+          }
+          template = `<a data-type="first" class="inner-page-number">1</a>`;
+        }
+        return template;
+      },
+    },
+  });
 })
 
 
-  
+
 
 const searchContent = event => {
   event.preventDefault();
@@ -129,8 +151,7 @@ const searchContent = event => {
     apiService.resetPages();
     apiService.film = string;
     console.log('apiService.film) - ', apiService.film);
-    apiService
-      .fetchFilmSearch()
+    apiService.fetchFilmSearch()
       .then(data => {
         // if (data.page === 0){
         //     clearSearch();
@@ -185,7 +206,7 @@ const searchContent = event => {
         //     renderGalleryCard(data);
         //   });
         // });
-                //Pagination function start
+        //Pagination function start
 
         let pagination2 = new Pagination(document.querySelector('#pagination'), {
           totalItems: apiService.getTotalRes(), //500
@@ -240,8 +261,8 @@ const searchContent = event => {
 };
 
 document.querySelector('#pagination').addEventListener('click', event => {
-    // ПРИ ЗАПРОССЕ РАБОТАЕТ
-    if (input.value !== ''){
+  // ПРИ ЗАПРОССЕ РАБОТАЕТ
+  if (input.value !== '') {
     console.log(event.target);
     const tuiBtn = event.target.closest('a');
     if (tuiBtn === null || event.target.nodeName === 'SPAN') {
@@ -252,39 +273,39 @@ document.querySelector('#pagination').addEventListener('click', event => {
       apiService.plusPage();
       apiService.fetchFilmSearch().then(data => {
         //   apiService.plusPage();
+        renderGalleryCard(data);
+      });
+      return;
+    } else
+      if (tuiBtn.dataset.type === 'prev') {
+        clearSearch();
+        apiService.minusPage();
+        apiService.fetchFilmSearch().then(data => {
+          // apiService.minusPage();
           renderGalleryCard(data);
         });
-      return;
-    } else 
-    if (tuiBtn.dataset.type === 'prev') {
+        return;
+      }
+    if (tuiBtn.dataset.type === 'last') {
       clearSearch();
-      apiService.minusPage();
+      apiService.page = lastPage
+      // apiService.page -= 1
       apiService.fetchFilmSearch().then(data => {
         // apiService.minusPage();
-          renderGalleryCard(data);
-        });
+        renderGalleryCard(data);
+      });
       return;
     }
-    if (tuiBtn.dataset.type === 'last') {
-        clearSearch();
-        apiService.page = lastPage
+    if (tuiBtn.dataset.type === 'first') {
+      clearSearch();
+      apiService.page = 1
       // apiService.page -= 1
-        apiService.fetchFilmSearch().then(data => {
-          // apiService.minusPage();
-            renderGalleryCard(data);
-          });
-        return;
-      }
-      if (tuiBtn.dataset.type === 'first') {
-        clearSearch();
-        apiService.page = 1
-      // apiService.page -= 1
-        apiService.fetchFilmSearch().then(data => {
-          // apiService.minusPage();
-            renderGalleryCard(data);
-          });
-        return;
-      }
+      apiService.fetchFilmSearch().then(data => {
+        // apiService.minusPage();
+        renderGalleryCard(data);
+      });
+      return;
+    }
     apiService.page = Number(tuiBtn.dataset.page);
     // renderGalleryCard(data);
     clearSearch();
@@ -292,64 +313,66 @@ document.querySelector('#pagination').addEventListener('click', event => {
     //   renderGalleryCard(data);
     // });
     apiService.fetchFilmSearch().then(data => {
-        renderGalleryCard(data);
-      });}
-      // ПРИ НЕ ЗАПРОСЕ НЕ РАБОТАЕТ
+      renderGalleryCard(data);
+    });
+  }
+  // ПРИ НЕ ЗАПРОСЕ НЕ РАБОТАЕТ
 
-      else {
-        console.log(event.target);
-        const tuiBtn = event.target.closest('a');
-        if (tuiBtn === null || event.target.nodeName === 'SPAN') {
-          return;
-        }
-        if (tuiBtn.dataset.type === 'next') {
-          clearSearch();
-          apiService.plusPage();
-          apiService.fetchFilmPopular().then(data => {
-            //   apiService.plusPage();
-              renderGalleryCard(data);
-            });
-          return;
-        } else 
-        if (tuiBtn.dataset.type === 'prev') {
-          clearSearch();
-          apiService.minusPage();
-          apiService.fetchFilmPopular().then(data => {
-            // apiService.minusPage();
-              renderGalleryCard(data);
-            });
-          return;
-        }
-        if (tuiBtn.dataset.type === 'last') {
-            console.log("================================", event.target)
-            clearSearch();
-            apiService.page = lastPage;
-            apiService.fetchFilmPopular().then(data => {
-              // apiService.minusPage();
-                renderGalleryCard(data);
-              });
-            return;
-          }
-          if (tuiBtn.dataset.type === 'first') {
-            clearSearch();
-            apiService.page = 1
-          // apiService.page -= 1
-            apiService.fetchFilmPopular().then(data => {
-              // apiService.minusPage();
-                renderGalleryCard(data);
-              });
-            return;
-          }
-        apiService.page = Number(tuiBtn.dataset.page);
-        // renderGalleryCard(data);
+  else {
+    console.log(event.target);
+    const tuiBtn = event.target.closest('a');
+    if (tuiBtn === null || event.target.nodeName === 'SPAN') {
+      return;
+    }
+    if (tuiBtn.dataset.type === 'next') {
+      clearSearch();
+      apiService.plusPage();
+      apiService.fetchFilmPopular().then(data => {
+        //   apiService.plusPage();
+        renderGalleryCard(data);
+      });
+      return;
+    } else
+      if (tuiBtn.dataset.type === 'prev') {
         clearSearch();
-        // apiService.fetchFilmPopularPage().then(data => {
-        //   renderGalleryCard(data);
-        // });
+        apiService.minusPage();
         apiService.fetchFilmPopular().then(data => {
-            renderGalleryCard(data);
-          });}
-  });
+          // apiService.minusPage();
+          renderGalleryCard(data);
+        });
+        return;
+      }
+    if (tuiBtn.dataset.type === 'last') {
+      console.log("================================", event.target)
+      clearSearch();
+      apiService.page = lastPage;
+      apiService.fetchFilmPopular().then(data => {
+        // apiService.minusPage();
+        renderGalleryCard(data);
+      });
+      return;
+    }
+    if (tuiBtn.dataset.type === 'first') {
+      clearSearch();
+      apiService.page = 1
+      // apiService.page -= 1
+      apiService.fetchFilmPopular().then(data => {
+        // apiService.minusPage();
+        renderGalleryCard(data);
+      });
+      return;
+    }
+    apiService.page = Number(tuiBtn.dataset.page);
+    // renderGalleryCard(data);
+    clearSearch();
+    // apiService.fetchFilmPopularPage().then(data => {
+    //   renderGalleryCard(data);
+    // });
+    apiService.fetchFilmPopular().then(data => {
+      renderGalleryCard(data);
+    });
+  }
+});
 
 // apiService.fetchGenres().then(data => {
 //     console.log(data.genres.name);
