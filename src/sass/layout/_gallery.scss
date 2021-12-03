@@ -66,8 +66,12 @@
 }
 .card-photo {
   border-radius: 5px;
+  margin-top: 30px;
 }
 .card-img {
+  width: 100%;
+  height: 412px;
+  object-fit: cover;
   border-radius: 5px;
   cursor: pointer;
   
@@ -84,6 +88,7 @@
   .gallery-item {
     flex-direction: column;
     align-items: center;
+    margin-top: -30px;
   }
   .gallery-item:not(:last-child) {
     margin-bottom: 20px;
@@ -130,8 +135,7 @@
 
 .card-no-image {
   //background-color: rgb(228, 222, 222);
-  width: 274px;
-  height: 411px;
+  width: 100%;
   background-image: url(../images/No_image_poster.png);
   background-repeat: no-repeat;
   background-size: cover;
