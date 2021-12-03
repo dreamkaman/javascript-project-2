@@ -6,6 +6,12 @@ const QUEUE_STORAGE = 'queue_storage';
 
 const NotiflixSettings = { fontSize: '20px', width: '500px' };
 
+let idCloseModal;
+let idEscapeKeydown;
+let idAddWaatched;
+let idAddQueue;
+
+
 
 const refs = {
   openModalBtn: document.querySelector('[data-card-photo]'),
@@ -46,7 +52,7 @@ function toggleModal(event) {
 
     const id = event.target.dataset['card'];
 
-    refs.backdropBackground.classList.toggle('is-hidden');
+    refs.backdropBackground.classList.remove('is-hidden');
 
     apiService.fetchFilmId(id).then(data => {
 
@@ -58,9 +64,17 @@ function toggleModal(event) {
         closeModalBtn: document.querySelector('.modal-close-btn'),
         backdropBackground: document.querySelector('#backdrop'),
       };
-      refs.closeModalBtn.addEventListener('click', (e) => {
-        refs.backdropBackground.classList.toggle('is-hidden');
-      });
+
+
+      idCloseModal = refs.closeModalBtn.addEventListener('click', (e) => {
+        refs.backdropBackground.classList.add('is-hidden');
+
+        document.removeEventListener("keydown", idEscapeKeydown);
+        watchedBtn.removeEventListener('click', idAddWaatched);
+        queueBtn.removeEventListener('click', idAddQueue);
+
+
+      }, { once: true });
 
       const watchedBtn = document.querySelector('.js-watched');
       const queueBtn = document.querySelector('.js-queue');
@@ -72,9 +86,19 @@ function toggleModal(event) {
       const realeseDateEl = document.querySelector('.js-year');
       const ratingSpanEl = document.querySelector('.modal-rating-film');
 
+      idEscapeKeydown = document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          refs.backdropBackground.classList.add('is-hidden');
+
+          watchedBtn.removeEventListener('click', idAddWaatched);
+          queueBtn.removeEventListener('click', idAddQueue);
+        };
+
+      }, { once: true }
+      );
 
 
-      watchedBtn.addEventListener('click', () => {
+      idAddWaatched = watchedBtn.addEventListener('click', () => {
         let localStorageArr = [];
 
         let myRealeseYear;// = "Realese year unknown";
@@ -133,7 +157,9 @@ function toggleModal(event) {
         //   localStorage.setItem(WATCHED_STORAGE, idModal.textContent)
         // }
       })
-      queueBtn.addEventListener('click', () => {
+
+
+      idAddQueue = queueBtn.addEventListener('click', () => {
         let localStorageArr = [];
 
         let myRealeseYear;// = "Realese year unknown";
