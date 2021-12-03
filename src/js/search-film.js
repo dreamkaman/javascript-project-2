@@ -4,7 +4,7 @@ import galleryCardTemplate from '../template/card.hbs';
 import tui from 'tui-pagination';
 import Pagination from 'tui-pagination';
 
-const DEFAULT_IMG_PATH = 'https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png';
+// const DEFAULT_IMG_PATH = 'https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png';
 const BASE_IMG_URL = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2';
 
 const form = document.querySelector('.search-form');
@@ -26,15 +26,29 @@ const changeSomeDataArr = results => {
                 }
             }
         });
+      
+      if (el.genre_ids.length) {
+          
         el.genre_ids = el.genre_ids.join(', ');//Genres change
+        
+        } else {
 
+       // el.genre_ids = "-";
+        
+       el.genre_ids = "Genres unknown";
+        
+        };
+    
         if (el.poster_path) {
-            el.poster_path = BASE_IMG_URL + el.poster_path
+          el.poster_path = BASE_IMG_URL + el.poster_path;
         };
 
         if (el.release_date) {
             el.release_date = (new Date(el.release_date)).getFullYear()
-        } else { el.release_date = "Release date unknown"};//Date change
+      } else {
+          // el.release_date = "-";
+          el.release_date = "Release date unknown"
+      };//Date change
 
 
     
@@ -60,9 +74,11 @@ apiService.fetchGenresMovie().then(data => {
 // console.log('const genres - ', genres);
 
 const renderGalleryCard = searchName => {
+
   console.log('searchName.results - ', searchName.results);
 
-  console.log('changeSomeDataArr - ', changeSomeDataArr(searchName.results));
+  changeSomeDataArr(searchName.results);
+
 
   gallery.insertAdjacentHTML('beforeend', galleryCardTemplate(searchName.results));
 };
@@ -71,7 +87,13 @@ const clearSearch = () => {
   gallery.innerHTML = '';
 };
 
+
+
 apiService.fetchFilmPopular().then(data => {
+  
+  console.log('data there - ', data);
+  //changeSomeDataArr(data.results);
+
     renderGalleryCard(data);
     
     let pagination2 = new Pagination(document.querySelector('#pagination'), {
