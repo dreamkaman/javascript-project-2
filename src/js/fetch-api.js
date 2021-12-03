@@ -73,21 +73,6 @@ export default class ApiService {
     return fetch;
   };
 
-  //   fetchFilmPopularPage = async currentPage => {
-  //     const fetch = await axios({
-  //       url: `trending/movie/week?api_key=${API_KEY}&language=en-US&page=${this.pages}`,
-  //       baseURL: BASE_URL,
-  //     }).then(response => {
-  //       this.plusPage();
-  //       this.minusPage();
-
-  //       console.log('fetchFilmPopularPage - response -', response);
-
-  //       return response.data;
-  //     });
-
-  //     return fetch;
-  //   };
 
   fetchFilmPopular = async () => {
     const fetch = await axios({
