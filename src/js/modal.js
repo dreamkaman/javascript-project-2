@@ -1,7 +1,7 @@
 import ApiService from '../js/fetch-api';
 import modalTemplate from '../template/modal.hbs';
 import Notiflix from 'notiflix';
-export const WATCHED_STORAGE = 'watched-storage';
+export const WATCHED_STORAGE = 'watched_storage';
 const QUEUE_STORAGE = 'queue_storage';
 
 const NotiflixSettings = { fontSize: '20px', width: '500px' };
