@@ -20,7 +20,7 @@ const changeSomeDataArr = results => {
       for (let i = 0; i < genres.length; i += 1) {
         if (genre === genres[i].id) {
           arr[ind] = genres[i].name;
-          console.log("Opa!")
+
           break;
         }
       }
@@ -54,13 +54,10 @@ let genres = [];
 apiService.fetchGenresMovie().then(data => {
   genres = data.genres;
 
-  console.log('data.genres - 1', genres);
 });
 
 
 const renderGalleryCard = searchName => {
-
-  console.log('searchName.results - ', searchName.results);
 
   changeSomeDataArr(searchName.results);
 
@@ -76,8 +73,6 @@ const clearSearch = () => {
 
 apiService.fetchFilmPopular().then(data => {
 
-  console.log('data there - ', data);
-  //changeSomeDataArr(data.results);
 
   renderGalleryCard(data);
 
@@ -92,7 +87,7 @@ apiService.fetchFilmPopular().then(data => {
       currentPage: '<span class="current-page">{{page}}</span>',
       moveButton: ({ type }) => {
         lastPage = data.total_pages;
-        console.log(lastPage)
+
         let template = ' ';
 
         if (type === 'next') {
@@ -129,11 +124,9 @@ const searchContent = event => {
   if (string !== '') {
     apiService.resetPages();
     apiService.film = string;
-    console.log('apiService.film) - ', apiService.film);
+
     apiService.fetchFilmSearch()
       .then(data => {
-
-        console.log('apiService.fetchFilmSearch() data ', data);
 
         renderGalleryCard(data);
 
@@ -180,7 +173,7 @@ const searchContent = event => {
 
       })
       .catch(error => {
-        console.log(error);
+
       });
   } else {
     clearSearch();
@@ -190,7 +183,7 @@ const searchContent = event => {
 document.querySelector('#pagination').addEventListener('click', event => {
 
   if (input.value !== '') {
-    console.log(event.target);
+
     const tuiBtn = event.target.closest('a');
     if (tuiBtn === null || event.target.nodeName === 'SPAN') {
       return;
@@ -242,7 +235,7 @@ document.querySelector('#pagination').addEventListener('click', event => {
 
 
   else {
-    console.log(event.target);
+
     const tuiBtn = event.target.closest('a');
     if (tuiBtn === null || event.target.nodeName === 'SPAN') {
       return;
@@ -266,7 +259,7 @@ document.querySelector('#pagination').addEventListener('click', event => {
         return;
       }
     if (tuiBtn.dataset.type === 'last') {
-      console.log("================================", event.target)
+
       clearSearch();
       apiService.page = lastPage;
       apiService.fetchFilmPopular().then(data => {

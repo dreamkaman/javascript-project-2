@@ -28,7 +28,7 @@ export default class ApiService {
       url: `search/movie?api_key=${API_KEY}&language=en-US&query=${this.searchFilm}&page=${this.pages}&include_adult=false`,
       baseURL: BASE_URL,
     }).then(response => {
-      console.log('fetchFilmSearch - ', response.data);
+
       this.plusPage();
       this.minusPage();
       if (response.data.total_results === 0) { spanEl.classList.remove('is-hidden') };
@@ -80,7 +80,6 @@ export default class ApiService {
       url: `trending/movie/week?api_key=${API_KEY}&page=${this.pages}`,
       baseURL: BASE_URL,
     }).then(response => {
-      console.log('fetchFilmPopular - response -', response);
 
       return response.data;
     });

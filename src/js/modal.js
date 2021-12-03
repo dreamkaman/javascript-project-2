@@ -25,7 +25,6 @@ const apiService = new ApiService();
 refs.openModalBtn.addEventListener('click', toggleModal);
 
 const filmTempate = film => {
-  console.log("ac", film);
   refs.modal.innerHTML = modalTemplate(film);
 };
 
@@ -46,8 +45,6 @@ function toggleModal(event) {
     apiService.fetchFilmId(id).then(data => {
 
       filmTempate(data);
-
-      console.log(data);
 
       const refs = {
         closeModalBtn: document.querySelector('.modal-close-btn'),
@@ -129,8 +126,6 @@ function toggleModal(event) {
 
           localStorageArr = JSON.parse(localStorage.getItem(WATCHED_STORAGE));
 
-          console.log(localStorageArr);
-
           localStorageArr.push(myFilm);
 
           localStorage.setItem(WATCHED_STORAGE, JSON.stringify(localStorageArr));
@@ -189,6 +184,6 @@ function toggleModal(event) {
         };
       })
     })
-    console.log('active');
+
   }
 }
