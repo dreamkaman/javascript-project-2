@@ -4,20 +4,35 @@ import myLibraryTemplate from '../template/mylibrary.hbs';
 
 const btnLibraryWatched = document.querySelector('#home-btn');
 const btnLibraryQueue = document.querySelector('#library-btn');
-const gallery = document.querySelector('.gallery');
+const gallery = document.querySelector('.filmoteka-gallery');
 
-btnLibraryQueue.addEventListener('click', buttonLibrary);
 
-btnLibraryWatched.addEventListener('click', buttonLibrary);
+btnLibraryQueue.addEventListener('click', onBtnLibraryQueueClick);
 
-function buttonLibrary() {
+btnLibraryWatched.addEventListener('click', onBtnLibraryWatchedClick);
+
+function onBtnLibraryQueueClick() {
     btnLibraryWatched.classList.toggle('active');
     btnLibraryQueue.classList.toggle('active');
+
+    gallery.innerHTML = '';
+
+    gallery.insertAdjacentHTML('beforeend', myLibraryTemplate(JSON.parse(localStorage.getItem('queue_storage'))));
 };
+
+function onBtnLibraryWatchedClick() {
+    btnLibraryWatched.classList.toggle('active');
+    btnLibraryQueue.classList.toggle('active');
+
+    gallery.innerHTML = '';
+
+    gallery.insertAdjacentHTML('beforeend', myLibraryTemplate(JSON.parse(localStorage.getItem('watched_storage'))));
+};
+
 
 gallery.innerHTML = '';
 
-gallery.insertAdjacentHTML('beforeend', myLibraryTemplate(JSON.parse(localStorage.getItem('watched-storage'))));
+gallery.insertAdjacentHTML('beforeend', myLibraryTemplate(JSON.parse(localStorage.getItem('watched_storage'))));
 
 
 
