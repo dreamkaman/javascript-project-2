@@ -1,0 +1,23 @@
+{{#each this}}
+<div class="card-photo" ">
+<div data-card=" {{id}}" class="card-no-image">
+
+    {{#if urlImage}}
+    <img data-card="{{id}}" class="card-img" src="{{urlImage}}" alt="{{title}}" loading="lazy" />
+    {{/if}}
+
+</div>
+
+<p class="id-card is-hidden">{{id}}</p>
+
+<div class="card-info">
+    <p class="card-name">
+        {{title}}
+    </p>
+    <p class="card-genre-date">
+        {{genres}} | {{releaseDate}}<span class="modal-rating-film">{{rating}}</span>
+    </p>
+
+</div>
+</div>
+{{/each}}
