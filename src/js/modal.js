@@ -1,7 +1,11 @@
 import ApiService from '../js/fetch-api';
 import modalTemplate from '../template/modal.hbs';
-const WATCHED_STORAGE = 'watched-storage';
+import Notiflix from 'notiflix';
+export const WATCHED_STORAGE = 'watched-storage';
 const QUEUE_STORAGE = 'queue_storage';
+
+const NotiflixSettings = { fontSize: '20px', width: '500px' };
+
 
 const refs = {
   openModalBtn: document.querySelector('[data-card-photo]'),
@@ -48,6 +52,8 @@ function toggleModal(event) {
 
       filmTempate(data);
 
+      console.log(data);
+
       const refs = {
         closeModalBtn: document.querySelector('.modal-close-btn'),
         backdropBackground: document.querySelector('#backdrop'),
@@ -69,6 +75,67 @@ function toggleModal(event) {
 
 
       watchedBtn.addEventListener('click', () => {
+        let localStorageArr = [];
+
+        let myRealeseYear;// = "Realese year unknown";
+
+        try {
+          myRealeseYear = (new Date(realeseDateEl.textContent)).getFullYear();
+        } catch (error) {
+
+        };
+
+        if (!myRealeseYear) { myRealeseYear = "Realese year unknown" };
+
+        let myUrlImage;
+
+        if (imgModal) {
+          myUrlImage = imgModal.currentSrc
+        } else {
+          myUrlImage = '';//'../images/No_image_poster.png'
+        };
+
+        console.dir(genresLiEl.textContent);
+
+        const myFilm = {
+          id: idModal.textContent,
+          urlImage: myUrlImage,
+          title: titleEl.textContent,
+          genres: genresLiEl.textContent,
+          realeseDate: myRealeseYear,
+          rating: ratingSpanEl.textContent,
+        };
+
+        if (!localStorage.getItem(WATCHED_STORAGE)) {
+          localStorageArr.push(myFilm);
+          localStorage.setItem(WATCHED_STORAGE, JSON.stringify(localStorageArr));
+        } else if (localStorage.getItem(WATCHED_STORAGE).includes(JSON.stringify(myFilm))) {
+          Notiflix.Notify.failure('Watched film list includes this film!', NotiflixSettings)
+          //alert("Watched film list includes this film!");
+        } else {
+
+          localStorageArr = JSON.parse(localStorage.getItem(WATCHED_STORAGE));
+
+          console.log(localStorageArr);
+
+          localStorageArr.push(myFilm);
+
+          localStorage.setItem(WATCHED_STORAGE, JSON.stringify(localStorageArr));
+
+        };
+        //console.log(typeof (idModal.textContent));
+
+        //localStorage.setItem(WATCHED_STORAGE, idModal.textContent);
+        // } else if (localStorage.getItem(WATCHED_STORAGE) === localStorage.getItem(QUEUE_STORAGE)) {
+        //   localStorage.setItem(WATCHED_STORAGE, idModal.textContent);
+        //   localStorage.removeItem(QUEUE_STORAGE, '');
+        // } else {
+        //   localStorage.setItem(WATCHED_STORAGE, idModal.textContent)
+        // }
+      })
+      queueBtn.addEventListener('click', () => {
+        let localStorageArr = [];
+
         let myRealeseYear;// = "Realese year unknown";
 
         try {
@@ -96,39 +163,23 @@ function toggleModal(event) {
           rating: ratingSpanEl.textContent,
         };
 
-        console.log(myFilm);
 
-        if (!localStorage.getItem(WATCHED_STORAGE)) {
-          localStorage.setItem(WATCHED_STORAGE, JSON.stringify(myFilm));
-        } else if (localStorage.getItem(WATCHED_STORAGE).includes(JSON.stringify(myFilm))) {
-          alert("Watched film list includes this film!");
+
+        if (!localStorage.getItem(QUEUE_STORAGE)) {
+          localStorageArr.push(myFilm);
+          localStorage.setItem(QUEUE_STORAGE, JSON.stringify(localStorageArr));
+        } else if (localStorage.getItem(QUEUE_STORAGE).includes(JSON.stringify(myFilm))) {
+          Notiflix.Notify.failure('Queue of the films includes this film!', NotiflixSettings)
+          //alert("Queue of the films includes this film!");
         } else {
-          localStorage.setItem(WATCHED_STORAGE, idModal.textContent);
+
+          localStorageArr = JSON.parse(localStorage.getItem(QUEUE_STORAGE));
+
+          localStorageArr.push(myFilm);
+
+          localStorage.setItem(QUEUE_STORAGE, JSON.stringify(localStorageArr));
+
         };
-
-
-
-        ;
-        //console.log(typeof (idModal.textContent));
-
-        //localStorage.setItem(WATCHED_STORAGE, idModal.textContent);
-        // } else if (localStorage.getItem(WATCHED_STORAGE) === localStorage.getItem(QUEUE_STORAGE)) {
-        //   localStorage.setItem(WATCHED_STORAGE, idModal.textContent);
-        //   localStorage.removeItem(QUEUE_STORAGE, '');
-        // } else {
-        //   localStorage.setItem(WATCHED_STORAGE, idModal.textContent)
-        // }
-      })
-      queueBtn.addEventListener('click', () => {
-        console.log('OPA!');
-        if (localStorage.getItem(QUEUE_STORAGE) === idModal.textContent) {
-          localStorage.setItem(QUEUE_STORAGE, '')
-        } else if (localStorage.getItem(QUEUE_STORAGE) === localStorage.getItem(WATCHED_STORAGE)) {
-          localStorage.setItem(QUEUE_STORAGE, (localStorage.getItem(QUEUE_STORAGE) || '') + idModal.textContent);
-          localStorage.setItem(WATCHED_STORAGE, '');
-        } else {
-          localStorage.setItem(QUEUE_STORAGE, (localStorage.getItem(QUEUE_STORAGE) || '') + idModal.textContent);
-        }
       })
     })
     console.log('active');

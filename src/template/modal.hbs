@@ -28,9 +28,11 @@
         <li class="modal-list modal-list-trans">
           <p>{{original_title}}</p>
         </li>
-
-        <li class="modal-list modal-list-trans js-genres">{{#each genres}}{{name}}/ {{/each}}</li>
-
+        {{#if genres}}
+        <li class="modal-list modal-list-trans js-genres">{{#each genres}}{{name}}, {{/each}}</li>
+        {{else}}
+        <li class="modal-list modal-list-trans js-genres">Genres unknown</li>
+        {{/if}}
       </ul>
     </div>
     <div class="modal-about-box">
