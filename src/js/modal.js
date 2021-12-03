@@ -21,29 +21,17 @@ const refs = {
 
 const apiService = new ApiService();
 
-// refs.backdropBackground.addEventListener('click', toggleModalBackdrop);
 
 refs.openModalBtn.addEventListener('click', toggleModal);
-// refs.closeModalBtn.addEventListener('click', toggleModalClose);
 
 const filmTempate = film => {
-  console.log("ac", film);
   refs.modal.innerHTML = modalTemplate(film);
 };
 
-// function toggleModalBackdrop(event) {
 
-//   if (event.target.nodeName === "IMG") {
-
-//     refs.backdropBackground.classList.toggle('is-hidden');
-//   }
-// };
 
 function toggleModal(event) {
 
-  //console.dir(event.target.className);
-
-  //console.log('event.target',event.target);
 
   console.dir(event.target.dataset['card']);
 
@@ -57,8 +45,6 @@ function toggleModal(event) {
     apiService.fetchFilmId(id).then(data => {
 
       filmTempate(data);
-
-      console.log(data);
 
       const refs = {
         closeModalBtn: document.querySelector('.modal-close-btn'),
@@ -101,7 +87,7 @@ function toggleModal(event) {
       idAddWaatched = watchedBtn.addEventListener('click', () => {
         let localStorageArr = [];
 
-        let myRealeseYear;// = "Realese year unknown";
+        let myRealeseYear;
 
         try {
           myRealeseYear = (new Date(realeseDateEl.textContent)).getFullYear();
@@ -116,7 +102,7 @@ function toggleModal(event) {
         if (imgModal) {
           myUrlImage = imgModal.currentSrc
         } else {
-          myUrlImage = '';//'../images/No_image_poster.png'
+          myUrlImage = '';
         };
 
         console.dir(genresLiEl.textContent);
@@ -135,34 +121,24 @@ function toggleModal(event) {
           localStorage.setItem(WATCHED_STORAGE, JSON.stringify(localStorageArr));
         } else if (localStorage.getItem(WATCHED_STORAGE).includes(JSON.stringify(myFilm))) {
           Notiflix.Notify.failure('Watched film list includes this film!', NotiflixSettings)
-          //alert("Watched film list includes this film!");
+
         } else {
 
           localStorageArr = JSON.parse(localStorage.getItem(WATCHED_STORAGE));
-
-          console.log(localStorageArr);
 
           localStorageArr.push(myFilm);
 
           localStorage.setItem(WATCHED_STORAGE, JSON.stringify(localStorageArr));
 
         };
-        //console.log(typeof (idModal.textContent));
 
-        //localStorage.setItem(WATCHED_STORAGE, idModal.textContent);
-        // } else if (localStorage.getItem(WATCHED_STORAGE) === localStorage.getItem(QUEUE_STORAGE)) {
-        //   localStorage.setItem(WATCHED_STORAGE, idModal.textContent);
-        //   localStorage.removeItem(QUEUE_STORAGE, '');
-        // } else {
-        //   localStorage.setItem(WATCHED_STORAGE, idModal.textContent)
-        // }
       })
 
 
       idAddQueue = queueBtn.addEventListener('click', () => {
         let localStorageArr = [];
 
-        let myRealeseYear;// = "Realese year unknown";
+        let myRealeseYear;
 
         try {
           myRealeseYear = (new Date(realeseDateEl.textContent)).getFullYear();
@@ -196,7 +172,7 @@ function toggleModal(event) {
           localStorage.setItem(QUEUE_STORAGE, JSON.stringify(localStorageArr));
         } else if (localStorage.getItem(QUEUE_STORAGE).includes(JSON.stringify(myFilm))) {
           Notiflix.Notify.failure('Queue of the films includes this film!', NotiflixSettings)
-          //alert("Queue of the films includes this film!");
+
         } else {
 
           localStorageArr = JSON.parse(localStorage.getItem(QUEUE_STORAGE));
@@ -208,6 +184,6 @@ function toggleModal(event) {
         };
       })
     })
-    console.log('active');
+
   }
 }
