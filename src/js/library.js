@@ -12,8 +12,8 @@ btnLibraryQueue.addEventListener('click', onBtnLibraryQueueClick);
 btnLibraryWatched.addEventListener('click', onBtnLibraryWatchedClick);
 
 function onBtnLibraryQueueClick() {
-    btnLibraryWatched.classList.toggle('active');
-    btnLibraryQueue.classList.toggle('active');
+    btnLibraryWatched.classList.remove('active');
+    btnLibraryQueue.classList.add('active');
 
     gallery.innerHTML = '';
 
@@ -21,8 +21,8 @@ function onBtnLibraryQueueClick() {
 };
 
 function onBtnLibraryWatchedClick() {
-    btnLibraryWatched.classList.toggle('active');
-    btnLibraryQueue.classList.toggle('active');
+    btnLibraryWatched.classList.add('active');
+    btnLibraryQueue.classList.remove('active');
 
     gallery.innerHTML = '';
 
