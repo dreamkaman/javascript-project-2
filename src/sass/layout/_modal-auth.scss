@@ -74,11 +74,31 @@
 }
 
 .modal-auth-close-btn {
-  display: none;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  border: none;
+
+  background-color: transparent;
+
+  position: absolute;
+  top: 20px;
+  right: 10px;
 }
 
 .modal-auth-reg-close-btn {
-  display: none;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  border: none;
+
+  background-color: transparent;
+
+  position: absolute;
+  top: 20px;
+  right: 10px;
 }
 
 .sign-in-form {
